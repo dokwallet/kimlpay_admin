@@ -1,0 +1,232 @@
+:root[data-theme="light"] {
+    --background: #55A1EB;
+    --font: #000;
+    --primary: #4d4a49;
+    --backgroundColor: #fff;
+    --lightBackground: #f5f5f5;
+    --disabledItem: #ddd;
+    --gray: #999694;
+    --textBox: #dad8d8;
+    --whiteOutline: #e6e2e1;
+    --title: #fff;
+    --borderActiveColor: #222;
+    --carouselPoints: rgba(0, 0, 0, 0.2);
+    --secondaryBackgroundColor: #fff;
+    --fontSecondary: #000;
+    --headerBorder: #b7b7b7;
+    --sidebarIcon: #989898;
+    --backdrop: rgba(0, 0, 0, 0.5);
+    --walletItemColor: #efedf4;
+    --toastBackground: #232441;
+    --progressBottom: #2650f4;
+    --leftToastBackground: #191b26;
+    --successBottom: #71c441;
+    --blue: #006ee6;
+    --leftMsgBg: #ececec;
+    --rightMsgBg: #579ffb;
+    --cubic-bezier: 0.25, 0.1, 0.25, 1;
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-roboto: var(--font-roboto);
+    /* new colors */
+    --btnHover: #171717;
+    --darkPurple: #362042;
+    --nb-grey-700: #525252;
+    --nb-grey-800: #404040;
+    --signHover: #3c2a59;
+    --hrefHover: #000;
+    --listBackground: #fff;
+    --listHover: rgba(0, 0, 0, 0.04);
+    --listSelected: rgba(25, 118, 210, 0.08);
+    --secondBackground: #68aef929;
+    --basicBorder: #fff;
+    --modalBackground: #fff;
+    --lightGreen: #1DB954;
+    --scrollbarThumb: rgba(0, 0, 0, 0.3);
+    --scrollbarThumbHover: rgba(0, 0, 0, 0.5);
+    --scrollbarTrack: transparent;
+}
+
+:root[data-theme="dark"] {
+    --background: #55A1EB;
+    --font: #e0e0e0;
+    --primary: #fff;
+    --lightBackground: #333;
+    --disabledItem: #111;
+    --backgroundColor: #232323;
+    --gray: #999694;
+    --whiteOutline: #484848;
+    --title: #fff;
+    --borderActiveColor: #fff;
+    --carouselPoints: #fff;
+    --secondaryBackgroundColor: #333130;
+    --fontSecondary: #000;
+    --headerBorder: #b7b7b7;
+    --sidebarIcon: #fff;
+    --backdrop: rgba(255, 255, 255, 0.1);
+    --walletItemColor: #151517;
+    --toastBackground: #232441;
+    --progressBottom: #2650f4;
+    --leftToastBackground: #191b26;
+    --successBottom: #71c441;
+    --blue: #006ee6;
+    --leftMsgBg: #ececec;
+    --rightMsgBg: #579ffb;
+    --cubic-bezier: 0.25, 0.1, 0.25, 1;
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-roboto: var(--font-roboto);
+    /* new colors */
+    --btnHover: #fff;
+    --darkPurple: #ffe2ff;
+    --nb-grey-700: #a3a3a3;
+    --nb-grey-800: #d4d4d4;
+    --signHover: #fff;
+    --hrefHover: #fff;
+    --listBackground: #333130;
+    --listHover: rgba(0, 0, 0, 0.1);
+    --listSelected: rgba(0, 0, 0, 0.3);
+    --basicBorder: #484848;
+    --secondBackground: #68aef929;
+    --modalBackground: #121212;
+    --lightGreen: #1DB954;
+    --scrollbarThumb: rgba(255, 255, 255, 0.3);
+    --scrollbarThumbHover: rgba(255, 255, 255, 0.5);
+    --scrollbarTrack: transparent;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    color: var(--font);
+    background-color: var(--backgroundColor);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body :focus {
+    outline: none;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+input {
+    list-style: none;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+input:focus {
+    outline: none;
+}
+
+svg {
+    fill: inherit;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.MuiBox-root:focus {
+    outline: none;
+}
+
+.MuiCheckbox-root {
+    color: var(--sidebarIcon) !important;
+}
+
+.MuiCheckbox-root.Mui-checked {
+    color: var(--background) !important;
+}
+
+.MuiOutlinedInput-root {
+    color: var(--borderActiveColor) !important;
+}
+
+.MuiInput-root:before {
+    border-bottom: 1px solid var(--borderActiveColor) !important;
+}
+
+.MuiInput-root:after {
+    border-bottom: 2px solid var(--borderActiveColor) !important;
+}
+
+.MuiInput-root {
+    color: var(--borderActiveColor) !important;
+}
+
+.helperText {
+    align-items: flex-start !important;
+    background: transparent !important;
+    color: #bb1b13 !important;
+    display: flex !important;
+    font-size: .875rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    margin: .5rem 0 0 0 !important;
+}
+
+.fullWidth {
+    width: 100% !important;
+}
+
+.btnIconText {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* toastify.css */
+.Toastify__toast--success .Toastify__toast-icon svg {
+    fill: green; /* Change to your desired color */
+}
+
+.Toastify__toast--error .Toastify__toast-icon svg {
+    fill: red; /* Change to your desired color */
+}
+
+.Toastify__toast--warning .Toastify__toast-icon svg {
+    fill: orange; /* Change to your desired color */
+}
+
+.Toastify__toast--info .Toastify__toast-icon svg {
+    fill: blue; /* Change to your desired color */
+}
+
+.pageLoader {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+}
+
+.carousel .control-dots .dot {
+    background-color: var(--background) !important; /* Change this to your desired color */
+}
+
+/* Optional: Change color on hover or active state */
+.carousel .control-dots .dot:hover,
+.carousel .control-dots .dot.selected {
+    background-color: var(--background); /* Hover or active color */
+}

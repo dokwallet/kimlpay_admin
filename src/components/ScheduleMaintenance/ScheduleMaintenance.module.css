@@ -1,0 +1,35 @@
+.mainScheduleDiv {
+    display: flex;
+    padding: 8px 24px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: darkorange;
+    z-index: 99999;
+    justify-content: space-between;
+    align-items: center;
+}
+.textDiv {
+    display: inline; /* Ensure it behaves like text */
+    font-size: 16px;
+    font-weight: 600;
+    white-space: normal; /* Allow natural text flow */
+    line-height: 1.5;
+    padding: 0 16px;
+    color: white;
+}
+.dateText {
+    font-size: 17px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .textDiv {
+        font-size: 13px;
+    }
+    .dateText {
+        font-size: 14px;
+    }
+}

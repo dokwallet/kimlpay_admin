@@ -1,0 +1,35 @@
+.mainContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.rightContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.formView {
+  background-color: var(--backgroundColor);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 24px 16px;
+  margin: 52px 32px 16px 32px;
+  max-width: 600px;
+}
+@media screen and (max-width: 768px) {
+  .formView {
+    margin: 24px 0 16px 0;
+  }
+  .mainContainer {
+    flex-direction: column;
+  }
+}

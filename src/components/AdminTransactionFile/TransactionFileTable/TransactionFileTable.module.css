@@ -1,0 +1,87 @@
+/* .tableContainer {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  .table {
+    min-width: 650px;
+  } */
+
+.tableHeader {
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--primary);
+}
+
+.tableContainer {
+    background: var(--backgroundColor);
+    border-radius: 0;
+    box-shadow: none;
+    /* padding: 16px; */
+}
+
+/* .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: green;
+} */
+
+
+.table {
+    width: 100%;
+    /* border-collapse: collapse; */
+}
+
+.table th {
+    background-color: var(--backgroundColor);
+    border-bottom: 2px solid #ddd;
+}
+
+.table td {
+    border-bottom: 1px solid #ddd;
+    color: var(--primary);
+    /* word-break: break-word; */
+}
+
+/* .table td {
+} */
+
+.table strong {
+    color: var(--font);
+    word-break: break-word;
+}
+
+.table tbody tr:last-child > td {
+    /* border-bottom: 1px solid var(--gray); */
+    /* border-bottom: 2px solid #ddd; */
+    border-bottom: none;
+}
+
+
+.cardCellContainer span {
+    color: var(--gray);
+}
+
+/* .table th {
+    background-color: #f5f5f5;
+} */
+
+/* .table tbody tr:hover {
+    background-color: #000;
+} */
+
+.filterButton {
+    text-transform: none;
+    background-color: var(--background);
+    border-radius: 6px;
+    color: var(--primary);
+    padding: 3px 15px;
+    font-size: 14px;
+    /* background-color: var(); */
+}
+
+.filterButton:disabled {
+    opacity: 0.5;
+    color: var(--primary);
+}

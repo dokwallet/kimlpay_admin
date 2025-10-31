@@ -1,0 +1,25 @@
+.filtersContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filterButton {
+    text-transform: none;
+    border: 1px solid var(--whiteOutline);
+    border-radius: 6px;
+    color: var(--primary);
+    padding: 3px 15px;
+    font-size: 14px;
+    /* background-color: var(); */
+}
+
+.filterButton:disabled {
+    opacity: 0.5;
+    color: var(--primary);
+}
+
+.activeFilter {
+    transition: 0.2s background;
+    background: var(--secondBackground);
+}

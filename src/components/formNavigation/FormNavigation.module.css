@@ -1,0 +1,21 @@
+.formNavigateContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.backBtn {
+    background: linear-gradient(to left, #73B4EF, #55A1EB);
+}
+
+@media (max-width: 768px) {
+    .formNavigateContainer {
+        gap: 100px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+    .formNavigateContainer {
+        gap: 300px;
+    }
+}

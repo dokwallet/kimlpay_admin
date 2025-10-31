@@ -1,0 +1,81 @@
+.mainContainer {
+    max-width:400px;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.verificationContainer {
+    max-width:400px;
+    margin: 2rem auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 0px 0 rgba(0, 0, 0, 0.2), 0px 0px 6px 0 rgba(0, 0, 0, 0.19);;
+    background: var(--secondaryBackgroundColor);
+}
+
+.verificationContainer h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.verificationContainer p {
+    margin: 10px 0 20px;
+}
+
+.emailTitle {
+    margin: 10px 0 30px !important;
+}
+
+.enterCodeLabel {
+    font-size: 16px;
+    display: block;
+}
+
+.resendBtn {
+    width: 50%;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.verifyBtn {
+    margin-bottom: 10px;
+    width: 300px !important;
+}
+
+.note {
+    font-size: 14px;
+    color: #888;
+}
+
+.note a {
+    color: rgb(107, 87, 142);
+    font-weight: 500;
+    background: none;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    transition: all 200ms ease-in-out 0s;
+}
+
+.note a:hover {
+    color: var(--signHover);
+}
+.twoFaSelect {
+    height: 50px;
+    min-height: 50px;
+    width: 300px !important;
+    margin-bottom: 16px;
+}
+
+.orText{
+    margin: 8px 0;
+}

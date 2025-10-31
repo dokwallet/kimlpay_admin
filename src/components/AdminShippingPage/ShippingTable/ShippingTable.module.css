@@ -1,0 +1,26 @@
+.transactionHashWrapper {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.txHashContainer {
+    white-space: nowrap;
+    max-width: 108px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.urlTextOverflow {
+    color: var(--blue);
+}
+
+.txHashContainer a {
+    color: var(--blue);
+}
+
+.transactionHashWrapper svg {
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+}

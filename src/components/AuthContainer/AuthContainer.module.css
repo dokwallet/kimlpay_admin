@@ -1,0 +1,51 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  min-height: 100svh;
+  height: 100%;
+  width: 100%;
+  max-width: 100svw;
+  overflow-x: hidden;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 66.67%;
+  max-width: 66.67%;
+}
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+
+.registerFormContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 4rem auto 0.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .registerFormContainer {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 20px;
+    margin: 2rem auto;
+  }
+  .mainContainer {
+    width: 100svw;
+    max-width: 100svw;
+  }
+  .nameFields {
+    flex-direction: column;
+    gap: 0;
+  }
+}

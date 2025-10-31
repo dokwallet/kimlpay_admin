@@ -1,0 +1,26 @@
+.footerContainer {
+    display: inline-flex;
+    padding: 16px 20px;
+    white-space: pre-wrap;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.linkText {
+    color: var(--nb-grey-800);
+    font-weight: 700;
+    background: none;
+    border: none;
+    text-decoration: none;
+    transition: all 200ms ease-in-out 0s;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.linkText:hover {
+    color: var(--hrefHover);
+}
+

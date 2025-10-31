@@ -1,0 +1,25 @@
+.termsContainer {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+.termsContainer .linkText {
+    color: var(--nb-grey-800);
+    font-weight: 500;
+    font-size: 0.875rem;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    transition: all 200ms ease-in-out 0s;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.termsContainer .linkText:hover {
+    color: var(--hrefHover);
+}

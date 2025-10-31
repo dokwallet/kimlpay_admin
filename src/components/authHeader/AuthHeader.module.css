@@ -1,0 +1,72 @@
+.authContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.logoContainer svg {
+    color: #ff4e4e;
+}
+
+.descriptionContainer {
+    text-align: center;
+    max-width: 40rem;
+    color: var(--font);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.25;
+    margin-top: 2rem;
+
+    /* // @include mobile {
+    //     max-width: $spacing-60;
+    //     font-size: $nb-text-xl;
+    // } */
+}
+
+/* // @include mobile {
+//     .logoContainer {
+//         margin-bottom: $spacing-6;
+//     }
+// } */
+
+
+
+/* // @import '/src/theme/theme';
+
+// .authContainer {
+//     align-items: center;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+// }
+
+// .logoContainer {
+//     margin-bottom: $spacing-8;
+
+//     svg {
+//         color: $nb-red-600;
+//     }
+// }
+
+// .descriptionContainer {
+//     text-align: center;
+//     max-width: $spacing-160;
+//     color: var(--darkPurple);
+
+//     @include setPrint($nb-text-2xl, $nb-font-regular);
+
+//     @include mobile {
+//         max-width: $spacing-60;
+//         font-size: $nb-text-xl;
+//     }
+// }
+
+// @include mobile {
+//     .logoContainer {
+//         margin-bottom: $spacing-6;
+//     }
+// } */

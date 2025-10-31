@@ -1,0 +1,135 @@
+.navContainerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #212730;
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  height: 80px;
+}
+
+.navContainerDesktop {
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  z-index: 999;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0px 12px;
+  position: relative;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile Navigation */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  .menuButton {
+    display: block;
+  }
+}
+
+.mobileNav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #212730;
+    padding: 1rem;
+    gap: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 24px 24px 0px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.mobileNavLink {
+  color: #9e9e9e;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+.mobileNavLink:hover {
+  color: #56a3eb;
+}
+
+@media (max-width: 768px) {
+  .navbarLogo {
+    width: 40%;
+    height: 40%;
+  }
+}
+
+/* Existing styles */
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.navLinkWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.navLinkItem {
+  margin-right: 16px;
+  margin-left: 16px;
+  cursor: pointer;
+  color: #9e9e9e;
+  margin-top: 0px;
+  text-decoration: none !important;
+}
+
+.navLinkItem:hover {
+  color: #56a3eb;
+}
+
+.navActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.containedButton {
+  background: #56a3eb !important;
+  border: 1px solid #56a3eb !important;
+  border-radius: 50px !important;
+  color: #fff;
+  z-index: 0;
+  box-shadow: 0px 12.63px 50.53px 0px rgba(0, 0, 0, 0.1) !important;
+  font-size: 14px !important;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.active {
+  color: #5d5bf6 !important;
+}

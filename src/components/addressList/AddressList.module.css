@@ -1,0 +1,57 @@
+.addressListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 5px 0 20px 0;
+    flex: 1;
+    flex-basis: 0;
+    overflow-y: auto;
+}
+
+.addressListItem {
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+    /* background: var(--kycListBackground); */
+    border: 1px solid var(--borderActiveColor);
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 5px;
+    transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+.addressListItem.selected {
+    box-shadow: 0 0 0 3px var(--background);
+    border: 1px solid transparent;
+}
+
+.personalText {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--borderActiveColor);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.documentText {
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--borderActiveColor);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.addressDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    color: var(--borderActiveColor);
+}

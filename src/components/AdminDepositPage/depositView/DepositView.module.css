@@ -1,0 +1,10 @@
+.emptyContainer {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+.emptyText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--font);
+}

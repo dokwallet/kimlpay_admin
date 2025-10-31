@@ -1,0 +1,19 @@
+
+.tabList {
+    flex-grow: 1;
+    font-size: 14px;
+    display: flex;
+    width: 100%;
+}
+
+.tab {
+    text-transform: none;
+    min-width: 50%;
+}
+.tabContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 24px;
+}

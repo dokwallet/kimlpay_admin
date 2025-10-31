@@ -1,0 +1,61 @@
+.title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary)
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.itemRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid var(--headerBorder);
+
+}
+.itemTitle {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--primary);
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.email {
+    margin: 24px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--font)
+}
+
+.loadingView {
+    padding: 40px 0
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 24px
+}
+.addPassKeyButton {
+    width: fit-content !important;
+    min-width: 146px !important;
+    height: 35px !important;
+    font-size: 14px !important;
+}
+.addPassKeyIconDiv {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+

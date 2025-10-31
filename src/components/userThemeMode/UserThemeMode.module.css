@@ -1,0 +1,32 @@
+.iconBtnWrapper {
+    margin-right: 12px;
+}
+
+.modeIcon {
+    color: var(--primary);
+}
+
+.titleWrapper {
+    border-bottom: 1px solid var(--whiteOutline);
+    padding: 2px 10px 10px 16px;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.menuItem:hover {
+    background: var(--secondBackground);
+}
+
+.activeItem {
+    background: var(--secondBackground);
+}
+
+.menuItem svg {
+    width: 20px;
+    height: 20px;
+}

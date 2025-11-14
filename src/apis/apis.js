@@ -205,10 +205,83 @@ export const getShippingAPI = async () => {
   }
 };
 
+export const exportLinksAPI = async payload => {
+  try {
+    const resp = await DokCreditCardAPI.get('/payment/export-links', {
+      params: payload,
+    });
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in exportShippingAPI', e?.message);
+    throw e;
+  }
+};
+
+export const getLinksAPI = async payload => {
+  try {
+    const resp = await DokCreditCardAPI.get('/payment/links', {
+      params: {
+        ...payload,
+      },
+    });
+
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (error) {
+    return {
+      status: error?.response?.status,
+      message: error?.response?.data?.message || 'Something went wrong',
+    };
+  }
+};
+export const getTelegramUsersAPI = async payload => {
+  try {
+    const resp = await DokCreditCardAPI.get('/telegram/users', {
+      params: {
+        ...payload,
+      },
+    });
+
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (error) {
+    return {
+      status: error?.response?.status,
+      message: error?.response?.data?.message || 'Something went wrong',
+    };
+  }
+};
+
+export const exportTelegramUsersAPI = async payload => {
+  try {
+    const resp = await DokCreditCardAPI.get('/telegram/users/export', {
+      params: payload,
+    });
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in exportShippingAPI', e?.message);
+    throw e;
+  }
+};
+
+export const updateTelegramUserStatusAPI = async (telegramId, status) => {
+  try {
+    const resp = await DokCreditCardAPI.put(
+      '/admin/users/update-telegram-user-status',
+      {
+        telegramId,
+        status,
+      },
+    );
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in updateUserStatusAPI', e?.message);
+    throw e;
+  }
+};
+
 export const getAdminTransactionsAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.get(
-      '/admin/transactions/get-card-transactions',
+      '/transactions/get-card-transactions',
       {
         params: payload,
       },
@@ -246,7 +319,7 @@ export const getAllFaq = async queryParams => {
 export const exportAdminTransactionsAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.get(
-      '/admin/transactions/export-transactions',
+      '/transactions/export-transactions',
       {
         params: payload,
       },
@@ -418,7 +491,7 @@ export const downloadFile = url => {
 export const updateUserStatusAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.put(
-      '/admin/users/update-user-status',
+      '/user/update-user-status',
       payload,
     );
     return { status: resp?.status, data: resp?.data?.data };
@@ -646,6 +719,18 @@ export const updateUserTopupCommissionAPI = async payload => {
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateUserTopupCommissionAPI', e?.message);
+    throw e;
+  }
+};
+export const updateUserPlateformFeeAPI = async payload => {
+  try {
+    const resp = await DokCreditCardAPI.put(
+      '/user/update-user-plateform-fee-commission',
+      payload,
+    );
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in updateUserPlateformFeeAPI', e?.message);
     throw e;
   }
 };

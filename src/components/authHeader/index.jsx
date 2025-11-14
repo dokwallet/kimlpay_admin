@@ -14,17 +14,6 @@ import Link from 'next/link';
 const AuthHeader = ({ hideTitle }) => {
   const { themeType } = useContext(ThemeContext);
 
-  useEffect(() => {
-    document.title = getAppTitle();
-    let link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'icon';
-      document.head.appendChild(link);
-    }
-    link.href = getAppIcon();
-  }, []);
-
   return (
     <div className={s.authContainer}>
       <Link className={s.logoContainer} href={'/'}>

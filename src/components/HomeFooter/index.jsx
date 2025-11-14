@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import styles from './HomeFooter.module.css';
-import { getAppName } from '@/whitelabel/whiteLabelInfo';
 import dayjs from 'dayjs';
 
 const HomeFooter = ({ optional = false }) => {
@@ -12,9 +11,7 @@ const HomeFooter = ({ optional = false }) => {
       className={`${styles.footer} ${optional ? styles.optionalFooter : ''}`}
       id='footer'>
       <div className={styles.footerWrapper}>
-        <p>
-          © {currentYear} {getAppName()} All Rights Reserved
-        </p>
+        <p>© {currentYear} KIML pay All Rights Reserved</p>
       </div>
     </div>
   );

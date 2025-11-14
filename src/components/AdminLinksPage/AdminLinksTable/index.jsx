@@ -13,11 +13,9 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { getCurrencySymbol } from '@/utils/helper';
-import { showToast } from '@/utils/toast';
 import styles from '../../AdminTopupPage/TopupTable/TopupTable.module.css';
 
-const AdminTransactionsTable = ({ transactions }) => {
+const AdminLinksTable = ({ links }) => {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.down('xs'));
   const widthSx = { minWidth: isXs ? 130 : 130 };
@@ -35,52 +33,44 @@ const AdminTransactionsTable = ({ transactions }) => {
                 DATE
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
-                TID
+                Link Id
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
                 Status
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
-                Fiat Total
+                Link Type
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
-                Crypto Amount
+                Used
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
-                Provider Fee
+                Usage Count
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
-                Kiml Fee
+                USD Amount
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {transactions.map((row, index) => (
+            {links.map((row, index) => (
               <TableRow key={row?.id} hover>
                 <TableCell>
                   {dayjs(row?.created_at || row?.createdAt).format(
                     'DD MMM YYYY hh:mm A',
                   )}
                 </TableCell>
-                <TableCell>{row?.external_tx_id || 'N/A'}</TableCell>
+                <TableCell>{row?.linkId || 'N/A'}</TableCell>
+                <TableCell>{row?.status || 'N/A'}</TableCell>
                 <TableCell>
                   <span
                     className={`${styles.statusBadge} ${styles[row?.status?.toLowerCase()] || ''}`}>
-                    {row?.status || 'N/A'}
+                    {row?.linkType || 'N/A'}
                   </span>
                 </TableCell>
-                <TableCell>
-                  {row?.total_amount} {row?.currency_from}
-                </TableCell>
-                <TableCell>
-                  {row?.amount_received} {row?.currency_to}
-                </TableCell>
-                <TableCell>
-                  {row?.provider_fees} {row?.currency_from}
-                </TableCell>
-                <TableCell>
-                  {row?.kiml_fees} {row?.currency_from}
-                </TableCell>
+                <TableCell>{row?.used || 'N/A'}</TableCell>
+                <TableCell>{row?.usageCount || 'N/A'}</TableCell>
+                <TableCell>{row?.usdAmount || 'N/A'}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -90,4 +80,4 @@ const AdminTransactionsTable = ({ transactions }) => {
   );
 };
 
-export default AdminTransactionsTable;
+export default AdminLinksTable;

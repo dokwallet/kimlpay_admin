@@ -10,38 +10,39 @@ import {
   formatStartDate,
   ADMIN_TRANSACTION_STATUS_DATA,
   ADMIN_TRANSACTION_STATUS_MAP,
+  ADMIN_LINK_STATUS_MAP,
 } from '@/utils/helper';
 import SimpleSelect from '@/components/SimpleSelect';
 import { topupFiltersValidationSchema } from '@/validations/topupFiltersValidations';
-import { getAdminTransactionFilter } from '@/redux/adminTransaction/adminTransactionSelectors';
+import { getAdminLinkFilter } from '@/redux/adminLink/adminLinkSelectors';
 import {
-  getAdminTransactions,
-  setAdminTransactionFilters,
-} from '@/redux/adminTransaction/adminTransactionSlice';
-import styles from './AdminTransactionFilter.module.css';
+  getAdminLinks,
+  setAdminLinkFilters,
+} from '@/redux/adminLink/adminLinkSlice';
+import styles from './AdminLinksFilter.module.css';
 
-const AdminTransactionFilters = ({ isCollapsed }) => {
+const AdminLinksFilters = ({ isCollapsed }) => {
   const dispatch = useDispatch();
-  const adminTransactionFilter = useSelector(getAdminTransactionFilter);
+  const adminLinkFilter = useSelector(getAdminLinkFilter);
 
   const isDateFilterApplied = !!(
-    adminTransactionFilter?.startDate && adminTransactionFilter?.endDate
+    adminLinkFilter?.startDate && adminLinkFilter?.endDate
   );
-  const isStatusFilterApplied = adminTransactionFilter?.status;
+  const isStatusFilterApplied = adminLinkFilter?.status;
 
   const formikProps = useFormik({
-    initialValues: { ...adminTransactionFilter },
+    initialValues: { ...adminLinkFilter },
     validationSchema: topupFiltersValidationSchema,
     onSubmit: values => {
       dispatch(
-        setAdminTransactionFilters({
+        setAdminLinkFilters({
           page: 1,
           startDate: formatStartDate(values?.startDate, true),
           endDate: formatEndDate(values?.endDate, true),
         }),
       );
       dispatch(
-        getAdminTransactions({
+        getAdminLinks({
           page: 1,
           startDate: formatStartDate(values?.startDate, true),
           endDate: formatEndDate(values?.endDate, true),
@@ -59,20 +60,20 @@ const AdminTransactionFilters = ({ isCollapsed }) => {
       endDate: null,
       status: '',
     };
-    dispatch(setAdminTransactionFilters(resetValue));
+    dispatch(setAdminLinkFilters(resetValue));
     formikProps.resetForm();
-    dispatch(getAdminTransactions(resetValue));
+    dispatch(getAdminLinks(resetValue));
   };
 
   const onChangeStatus = e => {
     dispatch(
-      setAdminTransactionFilters({
+      setAdminLinkFilters({
         status: e?.target?.value,
         page: 1,
       }),
     );
     dispatch(
-      getAdminTransactions({
+      getAdminLinks({
         status: e?.target?.value,
         page: 1,
       }),
@@ -87,13 +88,13 @@ const AdminTransactionFilters = ({ isCollapsed }) => {
             <DateFilter
               onChange={onChange}
               filterApplied={isDateFilterApplied}
-              filter={adminTransactionFilter}
+              filter={adminLinkFilter}
             />
             <SimpleSelect
               label='Status'
               labelSx={{ left: '15px' }}
-              data={ADMIN_TRANSACTION_STATUS_MAP}
-              value={adminTransactionFilter?.status}
+              data={ADMIN_LINK_STATUS_MAP}
+              value={adminLinkFilter?.status}
               onChange={onChangeStatus}
               customClass={styles.typeFilter}
               borderColor={
@@ -113,4 +114,4 @@ const AdminTransactionFilters = ({ isCollapsed }) => {
   );
 };
 
-export default AdminTransactionFilters;
+export default AdminLinksFilters;

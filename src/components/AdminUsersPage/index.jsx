@@ -269,14 +269,6 @@ const AdminUsersPage = () => {
           <div>
             <div className={styles.subRowView}>
               <UsersSearch />
-              <Button
-                className={`${styles.filterButton}  ${isMultiUserSelect ? styles.activeFilter : ''}`}
-                style={{ marginRight: 12 }}
-                startIcon={<CheckCircleOutline />}
-                onClick={toggleSelect}>
-                Select Multiple
-              </Button>
-
               {userSelectedLength >= 1 && (
                 <SimpleSelect
                   customClass={styles.selectView}

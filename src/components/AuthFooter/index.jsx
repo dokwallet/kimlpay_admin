@@ -1,7 +1,6 @@
 import s from './AuthFooter.module.css';
 import dayjs from 'dayjs';
 import { useMemo } from 'react';
-import { getAppName } from '@/whitelabel/whiteLabelInfo';
 
 const AuthFooter = () => {
   const currentYear = useMemo(() => {
@@ -9,7 +8,7 @@ const AuthFooter = () => {
   }, []);
   return (
     <div className={s.footerContainer}>
-      {`© ${currentYear} ${getAppName()} All Rights Reserved`}
+      {`© ${currentYear} KIML pay All Rights Reserved`}
     </div>
   );
 };

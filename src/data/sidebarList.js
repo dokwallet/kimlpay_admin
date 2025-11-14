@@ -7,6 +7,7 @@ import {
   Paid,
   FilePresent,
   PieChart,
+  Link,
 } from '@mui/icons-material';
 import { HandCoins, Wallet } from 'lucide-react';
 
@@ -31,10 +32,24 @@ export const adminSidebarList = [
   },
   {
     href: '/dashboard/admin/affiliate-users',
-    label: 'Admin Users',
+    label: 'Affiliate Users',
     icon: <Person />,
     permission: 'read_affiliate_users',
   },
+
+  {
+    href: '/dashboard/admin/link',
+    label: 'Link',
+    icon: <Link />,
+    permission: 'read_links',
+  },
+  {
+    href: '/dashboard/admin/telegram-users',
+    label: 'Telegram Users',
+    icon: <Link />,
+    permission: 'read_telegram_users',
+  },
+
   {
     href: '/dashboard/admin/deposit',
     label: 'Deposits',

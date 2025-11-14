@@ -10,38 +10,39 @@ import {
   formatStartDate,
   ADMIN_TRANSACTION_STATUS_DATA,
   ADMIN_TRANSACTION_STATUS_MAP,
+  USER_STATUS_DATA,
 } from '@/utils/helper';
 import SimpleSelect from '@/components/SimpleSelect';
 import { topupFiltersValidationSchema } from '@/validations/topupFiltersValidations';
-import { getAdminTransactionFilter } from '@/redux/adminTransaction/adminTransactionSelectors';
+import styles from './AdminTelegramUsersFilter.module.css';
+import { getAdminTelegramUserFilter } from '@/redux/adminTelegramUser/adminTelegramUserSelectors';
 import {
-  getAdminTransactions,
-  setAdminTransactionFilters,
-} from '@/redux/adminTransaction/adminTransactionSlice';
-import styles from './AdminTransactionFilter.module.css';
+  getAdminTelegramUsers,
+  setAdminTelegramUserFilters,
+} from '@/redux/adminTelegramUser/adminTelegramUserSlice';
 
-const AdminTransactionFilters = ({ isCollapsed }) => {
+const AdminTelegramUsersFilters = ({ isCollapsed }) => {
   const dispatch = useDispatch();
-  const adminTransactionFilter = useSelector(getAdminTransactionFilter);
+  const adminTelegramUserFilter = useSelector(getAdminTelegramUserFilter);
 
   const isDateFilterApplied = !!(
-    adminTransactionFilter?.startDate && adminTransactionFilter?.endDate
+    adminTelegramUserFilter?.startDate && adminTelegramUserFilter?.endDate
   );
-  const isStatusFilterApplied = adminTransactionFilter?.status;
+  const isStatusFilterApplied = adminTelegramUserFilter?.status;
 
   const formikProps = useFormik({
-    initialValues: { ...adminTransactionFilter },
+    initialValues: { ...adminTelegramUserFilter },
     validationSchema: topupFiltersValidationSchema,
     onSubmit: values => {
       dispatch(
-        setAdminTransactionFilters({
+        setAdminTelegramUserFilters({
           page: 1,
           startDate: formatStartDate(values?.startDate, true),
           endDate: formatEndDate(values?.endDate, true),
         }),
       );
       dispatch(
-        getAdminTransactions({
+        getAdminTelegramUsers({
           page: 1,
           startDate: formatStartDate(values?.startDate, true),
           endDate: formatEndDate(values?.endDate, true),
@@ -59,20 +60,20 @@ const AdminTransactionFilters = ({ isCollapsed }) => {
       endDate: null,
       status: '',
     };
-    dispatch(setAdminTransactionFilters(resetValue));
+    dispatch(setAdminTelegramUserFilters(resetValue));
     formikProps.resetForm();
-    dispatch(getAdminTransactions(resetValue));
+    dispatch(getAdminTelegramUsers(resetValue));
   };
 
   const onChangeStatus = e => {
     dispatch(
-      setAdminTransactionFilters({
+      setAdminTelegramUserFilters({
         status: e?.target?.value,
         page: 1,
       }),
     );
     dispatch(
-      getAdminTransactions({
+      getAdminTelegramUsers({
         status: e?.target?.value,
         page: 1,
       }),
@@ -87,13 +88,13 @@ const AdminTransactionFilters = ({ isCollapsed }) => {
             <DateFilter
               onChange={onChange}
               filterApplied={isDateFilterApplied}
-              filter={adminTransactionFilter}
+              filter={adminTelegramUserFilter}
             />
             <SimpleSelect
               label='Status'
               labelSx={{ left: '15px' }}
-              data={ADMIN_TRANSACTION_STATUS_MAP}
-              value={adminTransactionFilter?.status}
+              data={USER_STATUS_DATA}
+              value={adminTelegramUserFilter?.status}
               onChange={onChangeStatus}
               customClass={styles.typeFilter}
               borderColor={
@@ -113,4 +114,4 @@ const AdminTransactionFilters = ({ isCollapsed }) => {
   );
 };
 
-export default AdminTransactionFilters;
+export default AdminTelegramUsersFilters;

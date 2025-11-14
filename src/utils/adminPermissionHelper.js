@@ -7,6 +7,7 @@ const adminRoutes = [
     permission: 'read_affiliate_users',
   },
   { path: '/dashboard/admin/transactions', permission: 'read_transactions' },
+  { path: '/dashboard/admin/link', permission: 'read_links' },
   {
     path: '/dashboard/admin/transaction-files',
     permission: 'read_transactions_files',

@@ -25,6 +25,8 @@ const secureAdminRoutes = [
   '/dashboard/admin/topup',
   '/dashboard/admin/shipping',
   '/dashboard/admin/users',
+  '/dashboard/admin/link',
+  '/dashboard/admin/telegram-users',
   '/dashboard/admin/affiliate-users',
   '/dashboard/admin/deposit',
   '/dashboard/admin/payout',

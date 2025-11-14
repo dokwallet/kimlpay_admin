@@ -299,10 +299,34 @@ export const USER_STATUS_DATA = [
 ];
 
 export const USER_STATUS_MAP = {
+  active: 'ACTIVE',
+  blocked: 'BLOCKED',
+  pending: 'PENDING',
   1: 'ACTIVE',
   2: 'BLOCKED',
   3: 'PENDING',
 };
+
+export const ADMIN_TRANSACTION_STATUS_MAP = [
+  {
+    label: 'success',
+    value: 'SUCCESS',
+  },
+  {
+    label: 'failed',
+    value: 'FAILED',
+  },
+];
+export const ADMIN_LINK_STATUS_MAP = [
+  {
+    label: 'active',
+    value: 'active',
+  },
+  {
+    label: 'inactive',
+    value: 'inactive',
+  },
+];
 
 export const ADMIN_TRANSACTION_STATUS_DATA = [
   {
@@ -391,6 +415,7 @@ export const VALID_TOP_STATUS = ['PENDING', 'APPROVED', 'REJECTED'];
 export const VALID_TRANSACTION_FILE_TYPE = ['DAILY_FILE', 'FEE_FILE'];
 
 export const VALID_USERS_STATUS = ['ACTIVE', 'BLOCKED', 'PENDING'];
+export const ADMIN_LINK_STATUS = ['ACTIVE', 'INACTIVE'];
 
 export const VALID_SHIPPING_STATUS = ['IN-REVIEW', 'DISPATCH', 'SHIPPED'];
 

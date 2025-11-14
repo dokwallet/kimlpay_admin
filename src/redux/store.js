@@ -10,6 +10,7 @@ import { formDataSlice } from '@/redux/form/formDataSlice';
 import { userSlice } from '@/redux/user/userSlice';
 import { shippingSlice } from '@/redux/shipping/shippingSlice';
 import { adminTransactionSlice } from '@/redux/adminTransaction/adminTransactionSlice';
+import adminTelegramUserSlice from '@/redux/adminTelegramUser/adminTelegramUserSlice';
 import { topupSlice } from '@/redux/topup/topupSlice';
 import { settingsSlice } from '@/redux/settings/settingsSlice';
 import { affiliateUserSlice } from '@/redux/affiliateUser/affiliateUserSlice';
@@ -19,6 +20,7 @@ import { faqSlice } from '@/redux/faqs/faqSlice';
 import { depositSlice } from '@/redux/deposit/depositSlice';
 import { payoutSlice } from '@/redux/payout/payoutSlice';
 import { chartsSlice } from '@/redux/charts/chartsSlice';
+import adminLinkReducer from '@/redux/adminLink/adminLinkSlice';
 
 const encryptor = encryptTransform({
   secretKey: 'kiml_credit_cards', // Replace with your secret key
@@ -42,6 +44,7 @@ const rootReducer = persistCombineReducers(persistConfig, {
   [userSlice.name]: userSlice.reducer,
   [shippingSlice.name]: shippingSlice.reducer,
   [adminTransactionSlice.name]: adminTransactionSlice.reducer,
+  [adminTelegramUserSlice.name]: adminTelegramUserSlice.reducer,
   [topupSlice.name]: topupSlice.reducer,
   [settingsSlice.name]: settingsSlice.reducer,
   [affiliateUserSlice.name]: affiliateUserSlice.reducer,
@@ -50,6 +53,7 @@ const rootReducer = persistCombineReducers(persistConfig, {
   [depositSlice.name]: depositSlice.reducer,
   [payoutSlice.name]: payoutSlice.reducer,
   [chartsSlice.name]: chartsSlice.reducer,
+  adminLinks: adminLinkReducer,
 });
 
 const store = configureStore({

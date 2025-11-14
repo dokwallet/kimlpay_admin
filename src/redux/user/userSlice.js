@@ -11,6 +11,7 @@ import {
   registerUser,
   resendEmailOtp,
   updateUserAPI,
+  updateUserPlateformFeeAPI,
   updateUserStatusAPI,
   updateUserTopupCommissionAPI,
   verifyEmailOtp,
@@ -597,8 +598,8 @@ export const updateUserStatus = createAsyncThunk(
   },
 );
 
-export const updateUserTopupCommission = createAsyncThunk(
-  'user/updateUserTopupCommission',
+export const updateUserPlateformFeeCommission = createAsyncThunk(
+  'user/updateUserPlateformFeeCommission',
   async (payload, thunkAPI) => {
     const dispatch = thunkAPI.dispatch;
     let toastId;
@@ -638,12 +639,12 @@ export const updateUserTopupCommission = createAsyncThunk(
         type: 'progressToast',
         title: 'Updating commission of User',
       });
-      const resp = await updateUserTopupCommissionAPI({ ...payload });
+      const resp = await updateUserPlateformFeeAPI({ ...payload });
       const data = resp?.data;
       if (data) {
         showToast({
           type: 'successToast',
-          title: 'User deposit commission updated successfully',
+          title: 'User Plateform Fee commission updated successfully',
           toastId,
         });
         dispatch(updateUserData({ key, value: data }));

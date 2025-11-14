@@ -15,21 +15,13 @@ import {
 } from '@mui/material';
 import { getAffiliateOptions } from '@/redux/affiliateUser/affiliateUserSelector';
 import {
-  setSelectedUserIds,
+  updateUserPlateformFeeCommission,
   updateUserTopupCommission,
 } from '@/redux/user/userSlice';
 import styles from '../../AdminTopupPage/TopupTable/TopupTable.module.css';
 import UserTableItem from '@/components/AdminUsersPage/UsersTable/UserTableItem';
-import Checkbox from '@/components/Checkbox';
 
-const UsersTable = ({
-  users,
-  onUpdateStatus,
-  isMultiUserSelect,
-  selectedUserId,
-  permissions,
-  isAdminTab,
-}) => {
+const UsersTable = ({ users, onUpdateStatus, permissions, isAdminTab }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -40,31 +32,12 @@ const UsersTable = ({
   const isUserTab = useMemo(() => {
     return !isAdminTab;
   }, [isAdminTab]);
-  const checkboxWidth = { minWidth: 40 };
-
-  const isSelectedAll = useMemo(() => {
-    const allSelectedUserIds = Object.keys(selectedUserId);
-    return allSelectedUserIds.length === users?.length;
-  }, [selectedUserId, users?.length]);
-
-  const onSelectUserId = useCallback(() => {
-    const allSelectedUserIds = Object.keys(selectedUserId);
-    if (allSelectedUserIds.length === users?.length) {
-      dispatch(setSelectedUserIds({}));
-    } else {
-      const allKeys = users.reduce((acc, item) => {
-        acc[item?._id] = true;
-        return acc;
-      }, {});
-      dispatch(setSelectedUserIds(allKeys));
-    }
-  }, [dispatch, selectedUserId, users]);
 
   const affiliateOptions = useSelector(getAffiliateOptions);
 
   const onPressSaveCommission = useCallback(
     payload => {
-      dispatch(updateUserTopupCommission(payload));
+      dispatch(updateUserPlateformFeeCommission(payload));
     },
     [dispatch],
   );
@@ -86,11 +59,6 @@ const UsersTable = ({
         <Table className={styles.table} stickyHeader>
           <TableHead>
             <TableRow>
-              {isMultiUserSelect && canEdit && (
-                <TableCell sx={checkboxWidth} className={styles.tableHeader}>
-                  <Checkbox onChange={onSelectUserId} checked={isSelectedAll} />
-                </TableCell>
-              )}
               <TableCell sx={widthSx} className={styles.tableHeader}>
                 DATE
               </TableCell>
@@ -100,51 +68,16 @@ const UsersTable = ({
               <TableCell sx={widthSx} className={styles.tableHeader}>
                 Email
               </TableCell>
-              <TableCell
-                sx={{
-                  minWidth: isXs ? 50 : 70,
-                }}
-                className={styles.tableHeader}>
-                Country
-              </TableCell>
-              {isUserTab && (
-                <TableCell sx={widthSx} className={styles.tableHeader}>
-                  KYC Status
-                </TableCell>
-              )}
               {isUserTab && (
                 <>
-                  <TableCell
-                    sx={{ minWidth: '200px' }}
-                    className={styles.tableHeader}>
-                    Affiliate User
-                  </TableCell>
-                  <TableCell
-                    sx={{ minWidth: '200px' }}
-                    className={styles.tableHeader}>
-                    Master Affiliate User
+                  <TableCell sx={widthSx} className={styles.tableHeader}>
+                    Plateform Fee
                   </TableCell>
                 </>
               )}
               <TableCell sx={widthSx} className={styles.tableHeader}>
                 Status
               </TableCell>
-              {isUserTab && (
-                <>
-                  <TableCell sx={widthSx} className={styles.tableHeader}>
-                    Deposit Fee
-                  </TableCell>
-                  <TableCell sx={widthSx} className={styles.tableHeader}>
-                    Affiliate Commission
-                  </TableCell>
-                  <TableCell sx={widthSx} className={styles.tableHeader}>
-                    Master Affiliate Commission
-                  </TableCell>
-                  <TableCell sx={widthSx} className={styles.tableHeader}>
-                    Total Fee
-                  </TableCell>
-                </>
-              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -157,9 +90,6 @@ const UsersTable = ({
                 isUserTab={isUserTab}
                 onPressSaveCommission={onPressSaveCommission}
                 onUpdateStatus={onUpdateStatus}
-                isMultiUserSelect={isMultiUserSelect && canEdit}
-                selectedUserId={selectedUserId}
-                isKycDone={item?.isKycVerified ? 'Done' : 'Pending'}
                 canEdit={canEdit}
               />
             ))}

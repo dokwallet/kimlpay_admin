@@ -13,8 +13,8 @@ const productionHost = [
 ];
 
 const DokCreditCardAPI = axios.create({
-  // baseURL: 'https://api.kimlcards.com',
-  baseURL: 'http://localhost:3001/dev',
+  baseURL: 'https://api.kimlcards.com',
+  // baseURL: 'http://localhost:3001/dev',
   timeout: 60000,
   headers: {
     'Content-Type': 'application/json',

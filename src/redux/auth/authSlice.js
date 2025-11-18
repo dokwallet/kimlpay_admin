@@ -81,7 +81,7 @@ export const login = createAsyncThunk(
       dispatch(setIsSigning(false));
       dispatch(getUser());
       NextBugfender.setDeviceKey(finalPayload.email);
-      router.replace('/dashboard/admin/topup');
+      router.replace('/dashboard/admin/users');
     } catch (e) {
       console.error('Error in login', e);
       showToast({

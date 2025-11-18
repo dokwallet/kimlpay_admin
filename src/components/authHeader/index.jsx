@@ -1,10 +1,5 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import s from './AuthHeader.module.css';
-import {
-  getAppIcon,
-  getAppLogo,
-  getAppTitle,
-} from '@/whitelabel/whiteLabelInfo';
 import { ThemeContext } from '@/theme/ThemeContext';
 import Image from 'next/image';
 import KimlLogo from '@/assets/logo/kiml_light.png';

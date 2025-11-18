@@ -3,7 +3,6 @@ import React, { useCallback, useContext } from 'react';
 import { Box, Modal, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './ModalQRCode.module.css';
-import QRCode from 'react-qr-code';
 import { ThemeContext } from '@/theme/ThemeContext';
 import { ContentCopy } from '@mui/icons-material';
 import { showToast } from '@/utils/toast';
@@ -32,15 +31,7 @@ const ModalQRCode = ({ open, handleClose, qrText }) => {
             <CloseIcon />
           </IconButton>
         </div>
-        <div className={styles.subContainer}>
-          <QRCode
-            size={256}
-            value={qrText}
-            viewBox={`0 0 256 256`}
-            fgColor={themeType === 'light' ? '#000' : '#fff'}
-            bgColor={themeType !== 'light' ? '#000' : '#fff'}
-          />
-        </div>
+        <div className={styles.subContainer}></div>
         <div className={styles.chainView}>
           <div className={styles.address}>{qrText}</div>
           <IconButton

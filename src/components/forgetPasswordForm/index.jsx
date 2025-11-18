@@ -3,7 +3,6 @@ import React, { useCallback, useMemo } from 'react';
 import { useFormik, FormikProvider } from 'formik';
 import TextInput from '@/components/textInput';
 import Button from '@/components/_button';
-import TermsPrivacy from '@/components/termsPrivacy';
 import s from './ForgetPassword.module.css';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -69,7 +68,6 @@ const ForgetPasswordForm = () => {
         <Button isLoading={isSubmitting} type='button' onClick={handleSubmit}>
           Continue
         </Button>
-        <TermsPrivacy />
       </FormikProvider>
     </AuthContainer>
   );

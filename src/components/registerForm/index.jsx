@@ -1,20 +1,13 @@
 'use client';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback } from 'react';
 import { Form, FormikProvider, useFormik } from 'formik';
 import TextInput from '../textInput';
 import Button from '../_button';
 import CountrySelect from '../countrySelect';
 import style from '../loginForm/LoginForm.module.css';
 import PasswordStrength from '../PasswordStrength';
-import TermsPrivacy from '../termsPrivacy';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { registerValidation } from '@/validations/registerValidation';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRegisterFormData } from '@/redux/form/formDataSelector';
@@ -23,48 +16,18 @@ import { register } from '@/redux/user/userSlice';
 import { isRegisterSubmitting } from '@/redux/user/userSelector';
 import AuthContainer from '@/components/AuthContainer';
 import s from './RegisterForm.module.css';
-import AffiliateSelect from '@/components/AffiliateSelect';
-import {
-  getIsLoadingPublicAffiliate,
-  getPublicAffiliateUsers,
-  getSelectedPublicAffiliateUser,
-} from '@/redux/auth/authSelector';
-import {
-  fetchPublicAffiliateUser,
-  setSelectedPublicAffiliateUsers,
-} from '@/redux/auth/authSlice';
+
+import { getSelectedPublicAffiliateUser } from '@/redux/auth/authSelector';
+import { setSelectedPublicAffiliateUsers } from '@/redux/auth/authSlice';
 
 const RegisterForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const registerFormData = useSelector(getRegisterFormData);
   const isSubmitting = useSelector(isRegisterSubmitting);
-  const searchParams = useSearchParams();
-  const publicAffiliateUsers = useSelector(getPublicAffiliateUsers);
-  const isLoadingPublicAffiliate = useSelector(getIsLoadingPublicAffiliate);
   const selectedPublicAffiliateUser = useSelector(
     getSelectedPublicAffiliateUser,
   );
-  const aid = useMemo(() => {
-    return searchParams?.get('aid');
-  }, [searchParams]);
-
-  const isAffiliateAPICalled = useRef(false);
-
-  useEffect(() => {
-    if (!isAffiliateAPICalled.current) {
-      isAffiliateAPICalled.current = true;
-      dispatch(
-        fetchPublicAffiliateUser({
-          page: 1,
-          limit: 20,
-          username: aid ? aid : null,
-        }),
-      );
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aid]);
 
   const onRegister = useCallback(
     async values => {
@@ -96,7 +59,7 @@ const RegisterForm = () => {
     value => {
       dispatch(setSelectedPublicAffiliateUsers(value));
       const username = value?.username;
-      router.replace(`/signup${username ? `?aid=${value?.username}` : ''}`);
+      router.replace(`/signup`);
     },
     [dispatch, router],
   );
@@ -106,9 +69,7 @@ const RegisterForm = () => {
       <div className={s.mainRegisterForm}>
         <p className={style.signUp}>
           Already have an account?{' '}
-          <Link
-            href={`/login${aid ? `?aid=${aid}` : ''}`}
-            className={style.signupLink}>
+          <Link href={`/login`} className={style.signupLink}>
             Log in
           </Link>
         </p>
@@ -172,7 +133,6 @@ const RegisterForm = () => {
                 Sign up
               </Button>
             </Form>
-            <TermsPrivacy type='signUp' />
           </FormikProvider>
         </div>
       </div>

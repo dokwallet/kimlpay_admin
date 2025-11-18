@@ -3,7 +3,6 @@ import React, { useCallback } from 'react';
 import { useFormik, FormikProvider } from 'formik';
 import TextInput from '@/components/textInput';
 import Button from '@/components/_button';
-import TermsPrivacy from '@/components/termsPrivacy';
 import s from './VerifyForgetPasswordForm.module.css';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -79,7 +78,6 @@ const VerifyForgetPasswordForm = () => {
         <Button isLoading={isSubmitting} type='button' onClick={handleSubmit}>
           Reset Password
         </Button>
-        <TermsPrivacy />
       </FormikProvider>
     </AuthContainer>
   );

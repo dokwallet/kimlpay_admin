@@ -22,38 +22,13 @@ import NextBugfender from '@/utils/bugfender';
 import ScheduleMaintenance from '@/components/ScheduleMaintenance';
 
 const secureAdminRoutes = [
-  '/dashboard/admin/topup',
-  '/dashboard/admin/shipping',
   '/dashboard/admin/users',
   '/dashboard/admin/link',
   '/dashboard/admin/telegram-users',
-  '/dashboard/admin/affiliate-users',
-  '/dashboard/admin/deposit',
-  '/dashboard/admin/payout',
   '/dashboard/admin/transactions',
-  '/dashboard/admin/transaction-files',
-  '/dashboard/admin/charts',
-  '/privacy-policy',
-  '/terms-conditions',
-  '/contact-us',
-  '/about-us',
-  '/product-offer',
-  '/faq',
 ];
 
-const publicRoutes = [
-  '/',
-  '/login',
-  '/signup',
-  '/forget-password',
-  '/privacy-policy',
-  '/terms-conditions',
-  '/contact-us',
-  '/about-us',
-  '/product-offer',
-  '/tutorials',
-  '/faq',
-];
+const publicRoutes = ['/', '/login', '/signup', '/forget-password'];
 
 const AppRouting = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -118,7 +93,7 @@ const AppRouting = ({ children }) => {
           dispatch(getUser());
           if (sessionData?.authUser?.is_admin) {
             if (!secureAdminRoutes.includes(currentPageRef.current)) {
-              await router.replace('/dashboard/admin/topup');
+              await router.replace('/dashboard/admin/users');
             }
           }
         } else {

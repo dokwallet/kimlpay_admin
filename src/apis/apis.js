@@ -13,8 +13,8 @@ const productionHost = [
 ];
 
 const DokCreditCardAPI = axios.create({
-  baseURL: 'https://api.kimlcards.com',
-  // baseURL: 'http://localhost:3001/dev',
+  // baseURL: 'https://api.kimlcards.com',
+  baseURL: 'http://localhost:3001/dev',
   timeout: 60000,
   headers: {
     'Content-Type': 'application/json',
@@ -219,11 +219,14 @@ export const exportLinksAPI = async payload => {
 
 export const getLinksAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/payment/links', {
-      params: {
-        ...payload,
+    const resp = await DokCreditCardAPI.get(
+      '/payment/get-all-admin-payment-links',
+      {
+        params: {
+          ...payload,
+        },
       },
-    });
+    );
 
     return { status: resp?.status, data: resp?.data?.data };
   } catch (error) {
@@ -252,7 +255,7 @@ export const getTelegramUsersAPI = async payload => {
 
 export const exportTelegramUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/telegram/users/export', {
+    const resp = await DokCreditCardAPI.get('/telegram/export-admin-telegram', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -281,7 +284,7 @@ export const updateTelegramUserStatusAPI = async (telegramId, status) => {
 export const getAdminTransactionsAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.get(
-      '/transactions/get-card-transactions',
+      '/transactions/get-admin-transactions',
       {
         params: payload,
       },
@@ -319,7 +322,7 @@ export const getAllFaq = async queryParams => {
 export const exportAdminTransactionsAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.get(
-      '/transactions/export-transactions',
+      '/transactions/export-admin-transactions',
       {
         params: payload,
       },

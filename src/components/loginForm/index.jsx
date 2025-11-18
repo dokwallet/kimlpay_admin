@@ -3,7 +3,6 @@ import React, { useCallback, useMemo } from 'react';
 import { useFormik, FormikProvider, Form } from 'formik';
 import TextInput from '../textInput';
 import Button from '../_button';
-import TermsPrivacy from '../termsPrivacy';
 import s from './LoginForm.module.css';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -86,8 +85,6 @@ const LoginForm = () => {
             Sign in
           </Button>
         </Form>
-
-        <TermsPrivacy />
       </FormikProvider>
     </AuthContainer>
   );

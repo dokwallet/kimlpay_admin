@@ -6,16 +6,16 @@ import { getSessionStorage } from '@/utils/sessionStorageData';
 export let IS_SANDBOX = true;
 
 const productionHost = [
-  'admin.kimlcards.com',
-  'www.admin.kimlcards.com',
-  'admins.kimlcards.com',
-  'www.admins.kimlcards.com',
+  'admin-pay.kimlwallet.com',
+  'www.admin-pay.kimlwallet.com',
+  'admin-pay.dokwallet.com',
+  'www.admin-pay.dokwallet.com',
 ];
 
-const DokCreditCardAPI = axios.create({
-  baseURL: 'https://api.kimlcards.com',
+const KimlPayAdmin = axios.create({
+  baseURL: 'https://m8y4xi3hdc.execute-api.eu-north-1.amazonaws.com/dev',
   // baseURL: 'http://localhost:3001/dev',
-  timeout: 60000,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
     'api-version': 'v2',
@@ -28,15 +28,15 @@ const DokCreditCardAPI = axios.create({
 
 export const setIsSandbox = host => {
   IS_SANDBOX = !productionHost.includes(host);
-  DokCreditCardAPI.defaults.params.sandbox = IS_SANDBOX;
+  KimlPayAdmin.defaults.params.sandbox = IS_SANDBOX;
 };
 
 export const setAuthToken = token => {
-  DokCreditCardAPI.defaults.headers.Authorization = token;
+  KimlPayAdmin.defaults.headers.Authorization = token;
 };
 
 // Add a response interceptor
-DokCreditCardAPI.interceptors.response.use(
+KimlPayAdmin.interceptors.response.use(
   function (response) {
     return response;
   },
@@ -72,7 +72,7 @@ DokCreditCardAPI.interceptors.response.use(
 
 export const fetchWhiteLabelInfo = async () => {
   try {
-    const resp = await DokCreditCardAPI.get('/whitelabel/get-whitelabel-info');
+    const resp = await KimlPayAdmin.get('/whitelabel/get-whitelabel-info');
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in fetching white label info', e?.message);
@@ -82,7 +82,7 @@ export const fetchWhiteLabelInfo = async () => {
 
 export const registerUser = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post('/auth/register', payload);
+    const resp = await KimlPayAdmin.post('/auth/register', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in register api', e?.message);
@@ -92,7 +92,7 @@ export const registerUser = async payload => {
 
 export const resendEmailOtp = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post(
+    const resp = await KimlPayAdmin.post(
       '/auth/resend-verify-email',
       payload,
     );
@@ -105,7 +105,7 @@ export const resendEmailOtp = async payload => {
 
 export const verifyEmailOtp = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post('/auth/verify-email', payload);
+    const resp = await KimlPayAdmin.post('/auth/verify-email', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in verify email otp', e?.message);
@@ -115,7 +115,7 @@ export const verifyEmailOtp = async payload => {
 
 export const createTwoFa = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post('/auth/generate-two-fa', payload);
+    const resp = await KimlPayAdmin.post('/auth/generate-two-fa', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in generate two FA', e?.message);
@@ -125,7 +125,7 @@ export const createTwoFa = async payload => {
 
 export const generateTwoFaForExistingUser = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post(
+    const resp = await KimlPayAdmin.post(
       '/user/generate-two-fa-existing-user',
       payload,
     );
@@ -137,7 +137,7 @@ export const generateTwoFaForExistingUser = async payload => {
 };
 export const checkCredential = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post(
+    const resp = await KimlPayAdmin.post(
       '/auth/check-credentials',
       payload,
     );
@@ -150,7 +150,7 @@ export const checkCredential = async payload => {
 
 export const forgetPasswordAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post('/auth/forget-password', payload);
+    const resp = await KimlPayAdmin.post('/auth/forget-password', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in forgetPasswordAPI', e?.message);
@@ -160,7 +160,7 @@ export const forgetPasswordAPI = async payload => {
 
 export const verifyForgetPasswordAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post(
+    const resp = await KimlPayAdmin.post(
       '/auth/verify-forget-password',
       payload,
     );
@@ -173,7 +173,7 @@ export const verifyForgetPasswordAPI = async payload => {
 
 export const getUserAPI = async () => {
   try {
-    const resp = await DokCreditCardAPI.get('/user/get-user');
+    const resp = await KimlPayAdmin.get('/user/get-user');
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in getUserAPI', e?.message);
@@ -183,7 +183,7 @@ export const getUserAPI = async () => {
 
 export const exportLinksAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/admin/export-links', {
+    const resp = await KimlPayAdmin.get('/admin/export-links', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -195,7 +195,7 @@ export const exportLinksAPI = async payload => {
 
 export const getLinksAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get(
+    const resp = await KimlPayAdmin.get(
       '/admin/get-all-admin-payment-links',
       {
         params: {
@@ -214,7 +214,7 @@ export const getLinksAPI = async payload => {
 };
 export const getTelegramUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/admin/telegram-users', {
+    const resp = await KimlPayAdmin.get('/admin/telegram-users', {
       params: {
         ...payload,
       },
@@ -231,7 +231,7 @@ export const getTelegramUsersAPI = async payload => {
 
 export const exportTelegramUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/admin/export-admin-telegram', {
+    const resp = await KimlPayAdmin.get('/admin/export-admin-telegram', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -243,7 +243,7 @@ export const exportTelegramUsersAPI = async payload => {
 
 export const updateTelegramUserStatusAPI = async (telegramId, status) => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/admin/users/update-telegram-user-status',
       {
         telegramId,
@@ -259,7 +259,7 @@ export const updateTelegramUserStatusAPI = async (telegramId, status) => {
 
 export const getAdminTransactionsAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/admin/get-admin-transactions', {
+    const resp = await KimlPayAdmin.get('/admin/get-admin-transactions', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -271,7 +271,7 @@ export const getAdminTransactionsAPI = async payload => {
 
 export const getUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/admin/get-all-users', {
+    const resp = await KimlPayAdmin.get('/admin/get-all-users', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -283,7 +283,7 @@ export const getUsersAPI = async payload => {
 
 export const exportAdminTransactionsAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get(
+    const resp = await KimlPayAdmin.get(
       '/admin/export-admin-transactions',
       {
         params: payload,
@@ -298,7 +298,7 @@ export const exportAdminTransactionsAPI = async payload => {
 
 export const updatePersonalInfoAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/user/update-personal-info',
       payload,
     );
@@ -311,7 +311,7 @@ export const updatePersonalInfoAPI = async payload => {
 
 export const updatePasswordAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put('/user/update-password', payload);
+    const resp = await KimlPayAdmin.put('/user/update-password', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updatePasswordAPI', e?.message);
@@ -321,7 +321,7 @@ export const updatePasswordAPI = async payload => {
 
 export const deletePasskeyAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put('/user/delete-passkey', payload);
+    const resp = await KimlPayAdmin.put('/user/delete-passkey', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in deletePasskeyAPI', e?.message);
@@ -331,7 +331,7 @@ export const deletePasskeyAPI = async payload => {
 
 export const updatePasskeyAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put('/user/update-passkey', payload);
+    const resp = await KimlPayAdmin.put('/user/update-passkey', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updatePasskeyAPI', e?.message);
@@ -341,7 +341,7 @@ export const updatePasskeyAPI = async payload => {
 
 export const updateEmailAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put('/user/update-email', payload);
+    const resp = await KimlPayAdmin.put('/user/update-email', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateEmailAPI', e?.message);
@@ -351,7 +351,7 @@ export const updateEmailAPI = async payload => {
 
 export const verifyUpdateEmailAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/user/verify-update-email',
       payload,
     );
@@ -364,7 +364,7 @@ export const verifyUpdateEmailAPI = async payload => {
 
 export const updateTwoFAAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put('/user/update-twofa', payload);
+    const resp = await KimlPayAdmin.put('/user/update-twofa', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateTwoFAAPI', e?.message);
@@ -374,7 +374,7 @@ export const updateTwoFAAPI = async payload => {
 
 export const verifyUpdateTwoFAAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/user/verify-update-twofa',
       payload,
     );
@@ -387,7 +387,7 @@ export const verifyUpdateTwoFAAPI = async payload => {
 
 export const verifyTwoFAAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put('/user/verify-twofa', payload);
+    const resp = await KimlPayAdmin.put('/user/verify-twofa', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in verifyTwoFAAPI', e?.message);
@@ -405,7 +405,7 @@ export const downloadFile = url => {
 
 export const updateUserStatusAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/admin/update-user-status',
       payload,
     );
@@ -418,7 +418,7 @@ export const updateUserStatusAPI = async payload => {
 
 export const exportUserAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/admin/export-all-users', {
+    const resp = await KimlPayAdmin.get('/admin/export-all-users', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -430,7 +430,7 @@ export const exportUserAPI = async payload => {
 
 export const updateUserAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/admin/users/update-user',
       payload,
     );
@@ -443,7 +443,7 @@ export const updateUserAPI = async payload => {
 
 export const loginAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post('/auth/login', payload);
+    const resp = await KimlPayAdmin.post('/auth/login', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in loginAPI', e?.message);
@@ -453,7 +453,7 @@ export const loginAPI = async payload => {
 
 export const refreshTokenAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.post('/auth/refresh-token', payload);
+    const resp = await KimlPayAdmin.post('/auth/refresh-token', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in refreshTokenAPI', e?.message);
@@ -463,7 +463,7 @@ export const refreshTokenAPI = async payload => {
 
 export const updateUserPlateformFeeAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.put(
+    const resp = await KimlPayAdmin.put(
       '/admin/update-user-plateform-fee-commission',
       payload,
     );

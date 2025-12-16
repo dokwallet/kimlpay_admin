@@ -18,7 +18,6 @@ import AuthContainer from '@/components/AuthContainer';
 import s from './RegisterForm.module.css';
 
 import { getSelectedPublicAffiliateUser } from '@/redux/auth/authSelector';
-import { setSelectedPublicAffiliateUsers } from '@/redux/auth/authSlice';
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -53,15 +52,6 @@ const RegisterForm = () => {
       dispatch(setRegisterFormValues({ [e.target.name]: e.target.value }));
     },
     [dispatch],
-  );
-
-  const onChangeAffiliate = useCallback(
-    value => {
-      dispatch(setSelectedPublicAffiliateUsers(value));
-      const username = value?.username;
-      router.replace(`/signup`);
-    },
-    [dispatch, router],
   );
 
   return (

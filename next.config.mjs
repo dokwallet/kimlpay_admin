@@ -10,6 +10,5 @@ const nextConfig = {
     loaderFile: './src/components/NextImageLoader.js',
   },
   reactStrictMode: false,
-
 };
 export default nextConfig;

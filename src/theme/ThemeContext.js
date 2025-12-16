@@ -59,12 +59,14 @@ export default function ThemeProvider({ children }) {
   }, [theme]);
 
   useEffect(() => {
-    if (theme === 'system') {
-      return;
-    }
-    changeTheme(theme);
-    setThemeToLocalStorage(theme);
-    setThemeType(theme);
+    (() => {
+      if (theme === 'system') {
+        return;
+      }
+      changeTheme(theme);
+      setThemeToLocalStorage(theme);
+      setThemeType(theme);
+    })();
   }, [theme]);
 
   return (

@@ -16,7 +16,9 @@ const UsersSearch = () => {
   const [searchText, setSearchText] = useState(currentUserFilter.search ?? '');
 
   useEffect(() => {
-    setSearchText(currentUserFilter?.search ?? '');
+    (() => {
+      setSearchText(currentUserFilter?.search ?? '');
+    })();
   }, [currentUserFilter?.search]);
 
   const debouncedSearch = useCallback(

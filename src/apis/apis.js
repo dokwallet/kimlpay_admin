@@ -92,10 +92,7 @@ export const registerUser = async payload => {
 
 export const resendEmailOtp = async payload => {
   try {
-    const resp = await KimlPayAdmin.post(
-      '/auth/resend-verify-email',
-      payload,
-    );
+    const resp = await KimlPayAdmin.post('/auth/resend-verify-email', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in resend email otp', e);
@@ -137,10 +134,7 @@ export const generateTwoFaForExistingUser = async payload => {
 };
 export const checkCredential = async payload => {
   try {
-    const resp = await KimlPayAdmin.post(
-      '/auth/check-credentials',
-      payload,
-    );
+    const resp = await KimlPayAdmin.post('/auth/check-credentials', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in checkCredential', e?.message);
@@ -195,14 +189,11 @@ export const exportLinksAPI = async payload => {
 
 export const getLinksAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.get(
-      '/admin/get-all-admin-payment-links',
-      {
-        params: {
-          ...payload,
-        },
+    const resp = await KimlPayAdmin.get('/admin/get-all-admin-payment-links', {
+      params: {
+        ...payload,
       },
-    );
+    });
 
     return { status: resp?.status, data: resp?.data?.data };
   } catch (error) {
@@ -283,12 +274,9 @@ export const getUsersAPI = async payload => {
 
 export const exportAdminTransactionsAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.get(
-      '/admin/export-admin-transactions',
-      {
-        params: payload,
-      },
-    );
+    const resp = await KimlPayAdmin.get('/admin/export-admin-transactions', {
+      params: payload,
+    });
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in exportAdminTransactionsAPI', e?.message);
@@ -298,10 +286,7 @@ export const exportAdminTransactionsAPI = async payload => {
 
 export const updatePersonalInfoAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.put(
-      '/user/update-personal-info',
-      payload,
-    );
+    const resp = await KimlPayAdmin.put('/user/update-personal-info', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updatePersonalInfoAPI', e?.message);
@@ -351,10 +336,7 @@ export const updateEmailAPI = async payload => {
 
 export const verifyUpdateEmailAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.put(
-      '/user/verify-update-email',
-      payload,
-    );
+    const resp = await KimlPayAdmin.put('/user/verify-update-email', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in verifyUpdateEmailAPI', e?.message);
@@ -374,10 +356,7 @@ export const updateTwoFAAPI = async payload => {
 
 export const verifyUpdateTwoFAAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.put(
-      '/user/verify-update-twofa',
-      payload,
-    );
+    const resp = await KimlPayAdmin.put('/user/verify-update-twofa', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in verifyUpdateTwoFAAPI', e?.message);
@@ -405,10 +384,7 @@ export const downloadFile = url => {
 
 export const updateUserStatusAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.put(
-      '/admin/update-user-status',
-      payload,
-    );
+    const resp = await KimlPayAdmin.put('/admin/update-user-status', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateUserStatusAPI', e?.message);
@@ -430,10 +406,7 @@ export const exportUserAPI = async payload => {
 
 export const updateUserAPI = async payload => {
   try {
-    const resp = await KimlPayAdmin.put(
-      '/admin/users/update-user',
-      payload,
-    );
+    const resp = await KimlPayAdmin.put('/admin/users/update-user', payload);
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateUserAPI', e?.message);

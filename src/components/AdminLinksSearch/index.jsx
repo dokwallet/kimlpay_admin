@@ -14,7 +14,9 @@ const AdminLinksSearch = () => {
   const [searchText, setSearchText] = useState(adminLinkFilter.search ?? '');
 
   useEffect(() => {
-    setSearchText(adminLinkFilter?.search ?? '');
+    (() => {
+      setSearchText(adminLinkFilter?.search ?? '');
+    })();
   }, [adminLinkFilter?.search]);
 
   const debouncedSearch = useCallback(

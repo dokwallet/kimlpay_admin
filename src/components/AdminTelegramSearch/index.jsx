@@ -16,7 +16,9 @@ const AdminTelegramUsersSearch = () => {
   );
 
   useEffect(() => {
-    setSearchText(adminTelegramUserFilter?.search ?? '');
+    (() => {
+      setSearchText(adminTelegramUserFilter?.search ?? '');
+    })();
   }, [adminTelegramUserFilter?.search]);
 
   const debouncedSearch = useCallback(

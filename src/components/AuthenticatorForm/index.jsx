@@ -54,10 +54,12 @@ const AuthenticatorForm = () => {
   }, [userData?.two_fa_methods]);
 
   useEffect(() => {
-    if (authUrl) {
-      const isStandardScheme = authUrl.startsWith('otpauth:');
-      setIsOpenAppBtnVisible(isStandardScheme);
-    }
+    (() => {
+      if (authUrl) {
+        const isStandardScheme = authUrl.startsWith('otpauth:');
+        setIsOpenAppBtnVisible(isStandardScheme);
+      }
+    })();
   }, [authUrl]);
 
   const initialObj = useMemo(() => {

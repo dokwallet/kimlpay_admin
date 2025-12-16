@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "eslint --fix . && next build",
     "start": "next start",
-    "lint": "eslint --fix ."
+    "lint": "eslint ."
   },
   "dependencies": {
     "@bugfender/sdk": "^2.3.0",
@@ -17,7 +17,7 @@
     "@mui/x-date-pickers": "^7.28.0",
     "@reduxjs/toolkit": "^2.6.1",
     "@simplewebauthn/browser": "^11.0.0",
-    "axios": "^1.11.0",
+    "axios": "^1.13.2",
     "dayjs": "^1.11.11",
     "formik": "^2.4.6",
     "gsap": "^3.12.5",
@@ -39,6 +39,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "patch-package": "^8.0.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "typescript": "^5.9.3"
   }
 }

@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styles from './Passkeys.module.css';
 import Button from '@/components/_button';
 import AddCircleIcon from '@mui/icons-material/AddCircleOutlineOutlined';
@@ -23,26 +23,26 @@ const PasskeysForm = () => {
   const passkeys = useMemo(() => {
     return Array.isArray(userData?.passkeys) ? userData?.passkeys : [];
   }, [userData?.passkeys]);
-  const selectedPassKey = useRef(null);
+  const [selectedPassKey, setSelectedPasskey] = useState(null);
 
   const onClickNewPasskey = useCallback(() => {
     dispatch(verifyTwoFA({ isNewPasskey: true, type: 'PASSKEY' }));
   }, [dispatch]);
 
   const onPressDeleteIcon = useCallback(item => {
-    selectedPassKey.current = item;
+    setSelectedPasskey(item);
     setShowConfirmModal(true);
   }, []);
 
   const onPressEditIcon = useCallback(item => {
-    selectedPassKey.current = item;
+    setSelectedPasskey(item);
     setShowPasskeyModal(true);
   }, []);
 
   const onPressConfirmDelete = useCallback(() => {
     setShowConfirmModal(false);
-    dispatch(deletePasskey({ passkey_id: selectedPassKey?.current?.id }));
-  }, [dispatch]);
+    dispatch(deletePasskey({ passkey_id: selectedPassKey?.id }));
+  }, [dispatch, selectedPassKey?.id]);
 
   const onPressCancelDelete = useCallback(() => {
     setShowConfirmModal(false);
@@ -108,7 +108,7 @@ const PasskeysForm = () => {
       })}
       <ConfirmModal
         title={'Delete Passkey'}
-        description={`Are you sure you want to delete '${selectedPassKey?.current?.name || 'this'}'? This action cannot be undone.`}
+        description={`Are you sure you want to delete '${selectedPassKey?.name || 'this'}'? This action cannot be undone.`}
         confirmText={'Delete'}
         open={showConfirmModal}
         onClose={onPressCancelDelete}
@@ -116,7 +116,7 @@ const PasskeysForm = () => {
         onConfirm={onPressConfirmDelete}
       />
       <UpdatePasskeyNameModal
-        selectedPasskey={selectedPassKey?.current}
+        selectedPasskey={selectedPassKey}
         open={showPasskeyModal}
         onClose={onPressCancelUpdate}
       />

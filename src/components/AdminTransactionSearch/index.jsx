@@ -16,7 +16,9 @@ const AdminTransactionSearch = () => {
   );
 
   useEffect(() => {
-    setSearchText(adminTransactionFilter?.search ?? '');
+    (() => {
+      setSearchText(adminTransactionFilter?.search ?? '');
+    })();
   }, [adminTransactionFilter?.search]);
 
   const debouncedSearch = useCallback(

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   LinearProgress,
   Box,
@@ -42,7 +42,6 @@ const strengthMeter = password => {
 const PasswordStrength = ({ ...props }) => {
   const { label, name, onChange } = props;
   const [strength, setStrength] = useState({ score: 0, strengths: [] });
-  const passwordRef = useRef(false);
   const [field] = useField(props);
   const { value: password } = field;
 
@@ -68,7 +67,7 @@ const PasswordStrength = ({ ...props }) => {
         name={name}
         onChange={onChange}
       />
-      {(password || passwordRef.current) && (
+      {password && (
         <Box>
           <Box display='flex' alignItems='center'>
             <Box sx={{ width: '100%' }}>

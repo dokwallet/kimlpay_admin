@@ -6,6 +6,8 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    loader: 'custom',
+    loaderFile: './src/components/NextImageLoader.js',
   },
   reactStrictMode: false,
 

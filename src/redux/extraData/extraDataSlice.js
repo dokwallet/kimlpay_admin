@@ -1,12 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const previousRouteParams = {
-  Cards: '',
   Transactions: '',
   Settings: '',
-  Topup: '',
-  Deposit: '',
-  Kyc: '',
 };
 
 const initialState = {

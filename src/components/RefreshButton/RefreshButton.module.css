@@ -1,0 +1,17 @@
+.iconButton {
+    padding: 8px;
+    background-color: var(--background);
+    border-radius: 8px;
+    height: 40px;
+    width: 40px;
+}
+.iconButton:hover, .iconButton:focus {
+    background: linear-gradient(to right, #4567E8, #5A7EF0);
+}
+.iconButton:disabled {
+    background: gray;
+}
+.iconButton > svg {
+    color: white;
+}
+

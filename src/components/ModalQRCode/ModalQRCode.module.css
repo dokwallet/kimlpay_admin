@@ -1,0 +1,82 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.address {
+    color: var(--gray);
+    font-size: 14px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+
+.subContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 0;
+}
+
+
+
+
+
+.chainView {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.closeICon {
+    padding: 0;
+}
+
+.closeICon svg {
+    color: var(--font);
+}
+
+.modalBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 400px; */
+    background-color: var(--modalBackground);
+    /*border: 2px solid #000;*/
+    box-shadow: rgba(0, 0, 0, 0.2) 0 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 95svh; /* Maximum height for scrolling */
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .modalBox {
+        width: 95%;
+        max-height: 95svh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+    .modalBox {
+        width: 75%;
+        max-height: 95svh;
+    }
+}

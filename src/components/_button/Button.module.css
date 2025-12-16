@@ -1,0 +1,67 @@
+.buttonContainer {
+    display: inline-flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    padding: 0.625rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    width: 100%;
+    transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    /*height: fit-content;*/
+    height: 50px;
+    background: linear-gradient(to right, #55A1EB, #73B4EF);
+    color: white;
+    cursor: pointer;
+}
+
+.buttonContainer>span {
+    line-height: 1.5rem;
+    visibility: visible;
+}
+
+.buttonContainer:hover{
+    background: linear-gradient(to right, #4567E8, #5A7EF0);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.buttonContainer:focus{
+    background: linear-gradient(to right, #4567E8, #5A7EF0);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.buttonContainer:disabled {
+    background: rgb(232, 231, 231);
+    box-shadow: none;
+    cursor: not-allowed;
+    color: rgb(64, 64, 64);
+}
+
+.buttonContainer:disabled>span {
+    opacity: 0.5;
+}
+
+.spinner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid transparent;
+    border-top-color: var(--background);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 16px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

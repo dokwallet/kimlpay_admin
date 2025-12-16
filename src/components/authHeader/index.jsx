@@ -1,0 +1,36 @@
+import React, { useContext, useEffect, useMemo } from 'react';
+import s from './AuthHeader.module.css';
+import { ThemeContext } from '@/theme/ThemeContext';
+import Image from 'next/image';
+import KimlLogo from '@/assets/logo/kiml_light.png';
+import KimlLogoDark from '@/assets/logo/kiml_dark.png';
+import Link from 'next/link';
+
+const AuthHeader = ({ hideTitle }) => {
+  const { themeType } = useContext(ThemeContext);
+
+  return (
+    <div className={s.authContainer}>
+      <Link className={s.logoContainer} href={'/'}>
+        <Image
+          priority={true}
+          src={
+            KimlLogo?.[themeType]
+              ? KimlLogo?.[themeType]
+              : themeType === 'light'
+                ? KimlLogo
+                : KimlLogoDark
+          }
+          width={250}
+          height={50}
+          alt={'App logo'}
+        />
+      </Link>
+      {!hideTitle && (
+        <div className={s.descriptionContainer}>{'Admin Page'}</div>
+      )}
+    </div>
+  );
+};
+
+export default AuthHeader;

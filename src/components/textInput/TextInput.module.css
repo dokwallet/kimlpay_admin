@@ -1,0 +1,17 @@
+.textInput {
+    margin-bottom: 18px !important;
+}
+
+.textInput label {
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+
+.textInput input {
+    width: 100% !important;
+    border-radius: 6px !important;
+}
+
+.textInput:disabled {
+    background-color: red;
+}

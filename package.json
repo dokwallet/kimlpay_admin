@@ -1,0 +1,45 @@
+{
+  "name": "dok_credit_cards",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "eslint --fix . && next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@bugfender/sdk": "^2.3.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^6.4.8",
+    "@mui/material": "^6.4.8",
+    "@mui/x-date-pickers": "^7.28.0",
+    "@reduxjs/toolkit": "^2.6.1",
+    "@simplewebauthn/browser": "^11.0.0",
+    "axios": "^1.13.2",
+    "dayjs": "^1.11.11",
+    "formik": "^2.4.6",
+    "gsap": "^3.12.5",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.468.0",
+    "next": "16.0.10",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.5",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-encrypt": "^5.1.1",
+    "throttle-debounce": "^5.0.2",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "16.0.10",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "patch-package": "^8.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.9.3"
+  }
+}

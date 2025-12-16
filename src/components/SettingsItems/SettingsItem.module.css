@@ -1,0 +1,95 @@
+.mainContainer {
+  position: sticky;
+  left: 0;
+  top: 80px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.chevronIcon {
+  display: none;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: var(--backgroundColor);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.sidebar svg {
+  color: var(--primary);
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 8px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  fill: transparent;
+}
+.leftMenuItem {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.menuItem:hover {
+  background-color: var(--secondBackground);
+}
+
+.menuItem.active {
+  background-color: var(--secondBackground);
+  border-left: 4px solid var(--background);
+  padding-left: 6px;
+}
+
+.itemLabel {
+  color: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .mainContainer {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  .sidebar {
+    background-color: inherit;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+  }
+  .menuItem.active {
+    background-color: inherit;
+    border-left: none;
+    padding-left: 10px;
+  }
+  .menuItem {
+    border-bottom: 1px solid var(--borderActiveColor);
+    border-radius: 0;
+    padding: 12px 0 12px 10px;
+  }
+  .chevronIcon {
+    display: block;
+  }
+}

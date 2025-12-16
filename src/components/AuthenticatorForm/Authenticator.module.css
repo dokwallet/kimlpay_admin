@@ -1,0 +1,37 @@
+.title {
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary)
+}
+
+.email {
+    margin: 24px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--font)
+}
+
+.loadingView {
+    padding: 40px 0
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 24px
+}
+
+.orText {
+    text-align: center;
+}
+
+.actionButton {
+    margin: 8px 0;
+}
+
+.new_otp {
+    margin-top: 8px;
+}

@@ -1,0 +1,54 @@
+.userMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatarContainer {
+    display: flex;
+    justify-content: center;
+    padding: 8px 16px;
+}
+
+.avatarWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: var(--headerBorder);
+}
+
+.userNameText {
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--primary);
+}
+
+.userEmail {
+    display: block;
+    display: -webkit-box;
+    max-width: 200px;
+    height: 39.2px;
+    margin: 4px auto 0;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+@media (max-width: 900px) {
+    .avatar {
+        width: 28px;
+        height: 28px;
+    }
+}

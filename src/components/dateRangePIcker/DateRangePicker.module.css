@@ -1,0 +1,11 @@
+.dateRangePickerContainer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 10px;
+}
+
+.datePicker {
+    margin-bottom: 0 !important;
+}

@@ -13,9 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { getCurrencySymbol } from '@/utils/helper';
-import { showToast } from '@/utils/toast';
-import styles from '../../AdminTopupPage/TopupTable/TopupTable.module.css';
+import styles from './AdminTransactionsTable.module.css';
 
 const AdminTransactionsTable = ({ transactions }) => {
   const theme = useTheme();

@@ -38,14 +38,8 @@ import {
 } from '@/redux/user/userSlice';
 import UsersFilter from '../usersFilters';
 import RefreshButton from '../RefreshButton';
-import {
-  fetchAffiliateOptions,
-  getAllAffiliateUser,
-} from '@/redux/affiliateUser/affiliateUserSlice';
-import styles from '../AdminTopupPage/AdminTopupPage.module.css';
+import styles from './AdminUsersPage.module.css';
 import s from './AdminUsersPage.module.css';
-import { Button } from '@mui/material';
-import { CheckCircleOutline } from '@mui/icons-material';
 import SimpleSelect from '@/components/SimpleSelect';
 import UsersSearch from '@/components/AdminUsersPage/UsersSearch';
 import Loading from '@/components/Loading';
@@ -175,7 +169,6 @@ const AdminUsersPage = () => {
         );
       }
 
-      dispatch(fetchAffiliateOptions());
       if (tabIndex === 0 || (tabIndex === 1 && canViewAdminUsers)) {
         dispatch(getUsers(payload));
       }
@@ -252,7 +245,6 @@ const AdminUsersPage = () => {
         <RefreshButton
           onPressRefresh={() => {
             dispatch(getUsers({ isForceRefresh: true }));
-            dispatch(fetchAffiliateOptions({ isForceRefresh: true }));
           }}
         />
       </div>

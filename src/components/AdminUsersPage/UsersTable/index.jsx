@@ -13,12 +13,11 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import { getAffiliateOptions } from '@/redux/affiliateUser/affiliateUserSelector';
 import {
   updateUserPlateformFeeCommission,
   updateUserTopupCommission,
 } from '@/redux/user/userSlice';
-import styles from '../../AdminTopupPage/TopupTable/TopupTable.module.css';
+import styles from './UsersTable.module.css';
 import UserTableItem from '@/components/AdminUsersPage/UsersTable/UserTableItem';
 
 const UsersTable = ({ users, onUpdateStatus, permissions, isAdminTab }) => {
@@ -32,8 +31,6 @@ const UsersTable = ({ users, onUpdateStatus, permissions, isAdminTab }) => {
   const isUserTab = useMemo(() => {
     return !isAdminTab;
   }, [isAdminTab]);
-
-  const affiliateOptions = useSelector(getAffiliateOptions);
 
   const onPressSaveCommission = useCallback(
     payload => {
@@ -86,7 +83,6 @@ const UsersTable = ({ users, onUpdateStatus, permissions, isAdminTab }) => {
                 key={item.id || item?._id || `user_table_${index}`}
                 item={item}
                 index={index}
-                affiliateOptions={affiliateOptions}
                 isUserTab={isUserTab}
                 onPressSaveCommission={onPressSaveCommission}
                 onUpdateStatus={onUpdateStatus}

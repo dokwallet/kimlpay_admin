@@ -19,7 +19,7 @@ import {
   isUserLoading,
 } from '@/redux/user/userSelector';
 
-import styles from '../AdminTopupPage/AdminTopupPage.module.css';
+import styles from './AdminTelegramUsers.module.css';
 import Loading from '@/components/Loading';
 import AdminTelegramUsersView from './AdminTelegramUsersView';
 import {

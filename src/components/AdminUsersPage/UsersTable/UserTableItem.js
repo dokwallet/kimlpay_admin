@@ -8,9 +8,6 @@ import {
   USER_STATUS_MAP,
   validateNumber,
 } from '@/utils/helper';
-import Checkbox from '@/components/Checkbox';
-import { toggleSelectedUserIds, updateUser } from '@/redux/user/userSlice';
-import AffiliateSelect from '@/components/AffiliateSelect';
 import TableEditField from '@/components/TableEditField';
 
 const UserTableItem = ({

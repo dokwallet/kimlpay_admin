@@ -33,7 +33,7 @@ import {
 import AdminTransactionsView from './AdminTransactionsView';
 import AdminTransactionsFilters from '../AdminTransactionFilters';
 import AdminTransactionSearch from '../AdminTransactionSearch';
-import styles from '../AdminTopupPage/AdminTopupPage.module.css';
+import styles from './AdminTransactions.module.css';
 import Loading from '@/components/Loading';
 
 const AdminTransactionsPage = () => {

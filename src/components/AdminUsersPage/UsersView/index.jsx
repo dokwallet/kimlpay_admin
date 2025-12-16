@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Loading from '@/components/Loading';
 import Pagination from '@/components/pagination';
-import UsersTable from '../UsersTable';
-import styles from '../../AdminTopupPage/topupView/TopupView.module.css';
+import styles from './UsersView.module.css';
 import AccessDenied from '@/components/AccessDenied';
+import UsersTable from '../UsersTable';
 
 const UsersView = props => {
   const {

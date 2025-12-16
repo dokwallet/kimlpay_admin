@@ -17,7 +17,7 @@ import {
   getUserData,
   isUserLoading,
 } from '@/redux/user/userSelector';
-import styles from '../AdminTopupPage/AdminTopupPage.module.css';
+import styles from './AdminLinksPage.module.css';
 import Loading from '@/components/Loading';
 import AdminLinksSearch from '../AdminLinksSearch';
 import AdminLinksFilters from '../AdminLinksFilters';

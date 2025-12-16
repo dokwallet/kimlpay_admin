@@ -171,21 +171,7 @@ export const verifyForgetPasswordAPI = async payload => {
   }
 };
 
-export const createBulkShippingAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.post(
-      '/shipping/create-bulk-shipping',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in createBulkShippingAPI', e?.message);
-    throw e;
-  }
-};
-
 export const getUserAPI = async () => {
-  // /user/get-all-users
   try {
     const resp = await DokCreditCardAPI.get('/user/get-user');
     return { status: resp?.status, data: resp?.data?.data };
@@ -195,24 +181,14 @@ export const getUserAPI = async () => {
   }
 };
 
-export const getShippingAPI = async () => {
-  try {
-    const resp = await DokCreditCardAPI.get('/shipping/get-shipping');
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getShippingAPI', e?.message);
-    throw e;
-  }
-};
-
 export const exportLinksAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/payment/export-links', {
+    const resp = await DokCreditCardAPI.get('/admin/export-links', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
-    console.error('Error in exportShippingAPI', e?.message);
+    console.error('Error in exportLinksAPI', e?.message);
     throw e;
   }
 };
@@ -220,7 +196,7 @@ export const exportLinksAPI = async payload => {
 export const getLinksAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.get(
-      '/payment/get-all-admin-payment-links',
+      '/admin/get-all-admin-payment-links',
       {
         params: {
           ...payload,
@@ -238,7 +214,7 @@ export const getLinksAPI = async payload => {
 };
 export const getTelegramUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/telegram/users', {
+    const resp = await DokCreditCardAPI.get('/admin/telegram-users', {
       params: {
         ...payload,
       },
@@ -255,12 +231,12 @@ export const getTelegramUsersAPI = async payload => {
 
 export const exportTelegramUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/telegram/export-admin-telegram', {
+    const resp = await DokCreditCardAPI.get('/admin/export-admin-telegram', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
-    console.error('Error in exportShippingAPI', e?.message);
+    console.error('Error in exportTelegramUsersAPI', e?.message);
     throw e;
   }
 };
@@ -283,12 +259,9 @@ export const updateTelegramUserStatusAPI = async (telegramId, status) => {
 
 export const getAdminTransactionsAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get(
-      '/transactions/get-admin-transactions',
-      {
-        params: payload,
-      },
-    );
+    const resp = await DokCreditCardAPI.get('/admin/get-admin-transactions', {
+      params: payload,
+    });
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in getCardTransactionAPI', e?.message);
@@ -298,7 +271,7 @@ export const getAdminTransactionsAPI = async payload => {
 
 export const getUsersAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/user/get-all-users', {
+    const resp = await DokCreditCardAPI.get('/admin/get-all-users', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
@@ -308,78 +281,17 @@ export const getUsersAPI = async payload => {
   }
 };
 
-export const getAllFaq = async queryParams => {
-  try {
-    const resp = await DokCreditCardAPI.get('/public/get-faq', {
-      params: queryParams,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    throw e;
-  }
-};
-
 export const exportAdminTransactionsAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.get(
-      '/transactions/export-admin-transactions',
+      '/admin/export-admin-transactions',
       {
         params: payload,
       },
     );
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
-    console.error('Error in exportShippingAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getTopupAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/topup/get-all-topup', {
-      params: payload,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getTopupAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateTopupStatusAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/topup/update-topup-status',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateTopupStatusAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateDepositCommissionAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/deposit/update-deposit-commission',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateDepositCommissionAPI', e?.message);
-    throw e;
-  }
-};
-
-export const exportTopupAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/topup/export-all-topup', {
-      params: payload,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in exportTopupAPI', e?.message);
+    console.error('Error in exportAdminTransactionsAPI', e?.message);
     throw e;
   }
 };
@@ -494,7 +406,7 @@ export const downloadFile = url => {
 export const updateUserStatusAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.put(
-      '/user/update-user-status',
+      '/admin/update-user-status',
       payload,
     );
     return { status: resp?.status, data: resp?.data?.data };
@@ -506,12 +418,12 @@ export const updateUserStatusAPI = async payload => {
 
 export const exportUserAPI = async payload => {
   try {
-    const resp = await DokCreditCardAPI.get('/user/export-all-users', {
+    const resp = await DokCreditCardAPI.get('/admin/export-all-users', {
       params: payload,
     });
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
-    console.error('Error in exportTopupAPI', e?.message);
+    console.error('Error in exportUserAPI', e?.message);
     throw e;
   }
 };
@@ -525,155 +437,6 @@ export const updateUserAPI = async payload => {
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateUserAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getShippingsAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get(
-      '/admin/shipping/get-all-shippings',
-      {
-        params: payload,
-      },
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getShippingsAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateShippingStatusAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/shipping/update-shipping-status',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateShippingStatusAPI', e?.message);
-    throw e;
-  }
-};
-
-export const exportShippingAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get(
-      '/admin/shipping/export-all-shipping',
-      {
-        params: payload,
-      },
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in exportShippingAPI', e?.message);
-    throw e;
-  }
-};
-
-export const createAffiliateUserAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.post(
-      '/admin/affiliate-user/create-affiliate-user',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in createAffiliateUserAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getAffiliateUsersAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get('/user/get-all-admin-users', {
-      params: payload,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getShippingsAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getPublicAffiliateUsersAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get(
-      '/public/get-public-affiliate-user',
-      {
-        params: payload,
-      },
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getPublicAffiliateUsersAPI', e?.message);
-    throw e;
-  }
-};
-export const exportAffiliateUserAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get(
-      '/admin/affiliate-user/export-all-affiliate-users',
-      {
-        params: payload,
-      },
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in exportTopupAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateAffiliateUserAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/affiliate-user/update-affiliate-user',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateAffiliateUserAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateAffiliateUserIdAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/affiliate-user/update-affiliate-user-id',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateAffiliateUserIdAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateAffiliateUserTopupCommissionAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/affiliate-user/update-affiliate-user-topup-commission',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateAffiliateUserAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateAffiliateUserStatusAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/affiliate-user/update-affiliate-user-status',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateAffiliateUserStatusAPI', e?.message);
     throw e;
   }
 };
@@ -698,127 +461,15 @@ export const refreshTokenAPI = async payload => {
   }
 };
 
-export const getTransactionFilesAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get(
-      '/admin/transaction-files/get-all-transaction-files',
-      {
-        params: payload,
-      },
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getTransactionFilesAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updateUserTopupCommissionAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/users/update-user-topup-commission',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updateUserTopupCommissionAPI', e?.message);
-    throw e;
-  }
-};
 export const updateUserPlateformFeeAPI = async payload => {
   try {
     const resp = await DokCreditCardAPI.put(
-      '/user/update-user-plateform-fee-commission',
+      '/admin/update-user-plateform-fee-commission',
       payload,
     );
     return { status: resp?.status, data: resp?.data?.data };
   } catch (e) {
     console.error('Error in updateUserPlateformFeeAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getPayoutAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/payout/get-payout', {
-      params: payload,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getPayoutAPI', e?.message);
-    throw e;
-  }
-};
-
-export const exportPayoutAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/payout/export-payout', {
-      params: payload,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in exportPayoutAPI', e?.message);
-    throw e;
-  }
-};
-
-export const updatePayoutAPI = async payload => {
-  try {
-    const resp = await DokCreditCardAPI.put(
-      '/admin/payout/update-payout',
-      payload,
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in updatePayoutAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getUsersChartAPI = async (query = {}) => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/chart/get-users-chart', {
-      params: query,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getUsersChartAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getEarningsChartAPI = async (query = {}) => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/chart/get-earnings-chart', {
-      params: query,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getEarningsChartAPI', e?.message);
-    throw e;
-  }
-};
-
-export const getDepositsChartAPI = async (query = {}) => {
-  try {
-    const resp = await DokCreditCardAPI.get('/admin/chart/get-deposits-chart', {
-      params: query,
-    });
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getDepositsChartApi', e?.message);
-    throw e;
-  }
-};
-
-export const getReapInvoiceChartAPI = async () => {
-  try {
-    const resp = await DokCreditCardAPI.get(
-      '/admin/chart/get-reap-invoice-chart',
-    );
-    return { status: resp?.status, data: resp?.data?.data };
-  } catch (e) {
-    console.error('Error in getReapInvoiceChartApi', e?.message);
     throw e;
   }
 };

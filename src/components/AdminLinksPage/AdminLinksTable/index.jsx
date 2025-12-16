@@ -13,7 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import styles from '../../AdminTopupPage/TopupTable/TopupTable.module.css';
+import styles from './AdminLinksTable.module.css';
 
 const AdminLinksTable = ({ links }) => {
   const theme = useTheme();

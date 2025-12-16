@@ -1,0 +1,46 @@
+.tableHeader {
+  font-weight: bold;
+  font-size: 15px;
+  color: var(--primary);
+}
+
+.tableContainer {
+  background: var(--backgroundColor);
+  border-radius: 0;
+  box-shadow: none;
+  /* padding: 16px; */
+}
+
+.table {
+  width: 100%;
+  /* border-collapse: collapse; */
+}
+
+.table th {
+  background-color: var(--backgroundColor);
+  border-bottom: 2px solid #ddd;
+}
+
+.table td {
+  border-bottom: 1px solid #ddd;
+  color: var(--primary);
+  /* word-break: break-word; */
+}
+
+/* .table td {
+} */
+
+.table strong {
+  color: var(--font);
+  word-break: break-word;
+}
+
+.table tbody tr:last-child > td {
+  /* border-bottom: 1px solid var(--gray); */
+  /* border-bottom: 2px solid #ddd; */
+  border-bottom: none;
+}
+
+.cardCellContainer span {
+  color: var(--gray);
+}

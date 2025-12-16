@@ -125,39 +125,6 @@ export const checkAndSetAuthUser = createAsyncThunk(
   },
 );
 
-export const fetchPublicAffiliateUser = createAsyncThunk(
-  'auth/fetchPublicAffiliateUser',
-  async (payload, thunkAPI) => {
-    const dispatch = thunkAPI.dispatch;
-    try {
-      dispatch(setIsLoadingPublicAffiliate(true));
-      const finalPayload = {
-        limit: payload?.limit || 20,
-        page: payload?.page || 1,
-      };
-      if (payload?.username) {
-        finalPayload.username = payload?.username;
-      }
-      const resp = await getPublicAffiliateUsersAPI(finalPayload);
-      const affiliateUsersData = resp.data?.items;
-      if (affiliateUsersData) {
-        dispatch(setPublicAffiliateUsers(affiliateUsersData));
-        if (finalPayload?.username && affiliateUsersData[0])
-          dispatch(setSelectedPublicAffiliateUsers(affiliateUsersData[0]));
-      } else {
-        throw new Error('Something went wrong in fetching affiliate users');
-      }
-    } catch (e) {
-      console.error('Error in getPublicAffiliateUser', e);
-      showToast({
-        type: 'errorToast',
-        error: e,
-      });
-      dispatch(setIsLoadingPublicAffiliate(false));
-    }
-  },
-);
-
 export const signout = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
   const dispatch = thunkAPI.dispatch;
   try {
@@ -188,10 +155,6 @@ export const authSlice = createSlice({
       state.accessToken = payload?.accessToken;
       state.refreshToken = payload?.refreshToken;
     },
-    setPublicAffiliateUsers: (state, { payload }) => {
-      state.publicAffiliateUsers = payload;
-      state.isLoadingPublicAffiliate = false;
-    },
     setIsLoadingPublicAffiliate: (state, { payload }) => {
       state.isLoadingPublicAffiliate = payload;
     },
@@ -204,12 +167,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const {
-  resetAuthData,
-  setAuthData,
-  setIsSigning,
-  setIsSigningOut,
-  setPublicAffiliateUsers,
-  setSelectedPublicAffiliateUsers,
-  setIsLoadingPublicAffiliate,
-} = authSlice.actions;
+export const { resetAuthData, setAuthData, setIsSigning, setIsSigningOut } =
+  authSlice.actions;

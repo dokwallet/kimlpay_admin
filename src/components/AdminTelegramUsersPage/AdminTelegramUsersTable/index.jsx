@@ -11,11 +11,10 @@ import {
   Box,
   useTheme,
   useMediaQuery,
-  Chip,
 } from '@mui/material';
 import dayjs from 'dayjs';
 import SimpleSelect from '@/components/SimpleSelect';
-import styles from '../../AdminTopupPage/TopupTable/TopupTable.module.css';
+import styles from './AdminTelegramUsersTable.module.css';
 import { USER_STATUS_DATA, USER_STATUS_MAP } from '@/utils/helper';
 
 const STATUS_OPTIONS = [

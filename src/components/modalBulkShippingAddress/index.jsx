@@ -18,10 +18,6 @@ import {
   isShippingSubmitting,
 } from '@/redux/shipping/shippingSelector';
 import FormShippingInfo from '@/components/FormShippingInfo';
-import {
-  createBulkShipping,
-  getShippings,
-} from '@/redux/shipping/shippingSlice';
 import { bulkShippingFormValidationSchema } from '@/validations/bulkShippingFormValidations';
 
 const ModalBulkShippingAddress = ({ open, handleClose, cardIds }) => {

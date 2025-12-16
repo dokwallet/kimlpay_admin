@@ -1,5 +1,5 @@
 import SettingsIcon from '@mui/icons-material/Settings';
-import { PeopleAlt, Paid, Link } from '@mui/icons-material';
+import { PeopleAlt, Paid, Link, Telegram } from '@mui/icons-material';
 
 export const adminSidebarList = [
   {
@@ -18,7 +18,7 @@ export const adminSidebarList = [
   {
     href: '/dashboard/admin/telegram-users',
     label: 'Telegram Users',
-    icon: <Link />,
+    icon: <Telegram />,
     permission: 'read_telegram_users',
   },
 

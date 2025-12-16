@@ -15,7 +15,7 @@ import SimpleSelect from '@/components/SimpleSelect';
 import { topupFiltersValidationSchema } from '@/validations/topupFiltersValidations';
 import { getSelectedUsersTab, getUsersFilter } from '@/redux/user/userSelector';
 import { getUsers, setUsersFilters } from '@/redux/user/userSlice';
-import styles from '../topupFilters/TopupFilter.module.css';
+import styles from './usersFilters.module.css';
 
 const UsersFilter = ({ isCollapsed }) => {
   const dispatch = useDispatch();

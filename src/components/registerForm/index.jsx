@@ -110,22 +110,6 @@ const RegisterForm = () => {
                 name='confirmPassword'
                 onChange={onChange}
               />
-              {/* {isLoadingPublicAffiliate ? (
-                <TextInput
-                  label='Loading Affiliates'
-                  name='tempAffiliate'
-                  disabled={true}
-                />
-              ) : (
-                <div className={s.affiliateDiv}>
-                  <AffiliateSelect
-                    selectedAffiliateUser={selectedPublicAffiliateUser}
-                    affiliateUserDetails={publicAffiliateUsers}
-                    onChangeAffiliate={onChangeAffiliate}
-                    isPublic={true}
-                  />
-                </div>
-              )} */}
               <Button
                 type='submit'
                 onClick={handleSubmit}

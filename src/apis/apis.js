@@ -6,6 +6,8 @@ import { getSessionStorage } from '@/utils/sessionStorageData';
 export let IS_SANDBOX = true;
 
 const productionHost = [
+  'main.d2yrv1ijeczgny.amplifyapp.com',
+  'www.main.d2yrv1ijeczgny.amplifyapp.com',
   'admin-pay.kimlwallet.com',
   'www.admin-pay.kimlwallet.com',
   'admin-pay.dokwallet.com',

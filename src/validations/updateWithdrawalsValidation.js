@@ -2,7 +2,7 @@ import { string, object, number } from 'yup';
 export const updateWithdrawalsValidation = previousObj => {
   return object()
     .shape({
-      status: string().required().oneOf(['pending', 'approved']),
+      status: string().required().oneOf(['pending', 'approved', 'rejected']),
       tx_hash: string().nullable().optional(),
       reason: string().nullable().optional(),
       customField: object().test(

@@ -490,4 +490,8 @@ export const WITHDRAWALS_STATUS_DATA = [
     label: 'APPROVED',
     value: 'approved',
   },
+  {
+    label: 'REJECTED',
+    value: 'rejected',
+  },
 ];

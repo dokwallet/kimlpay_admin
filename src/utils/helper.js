@@ -418,6 +418,7 @@ export const VALID_USERS_STATUS = ['ACTIVE', 'BLOCKED', 'PENDING'];
 export const ADMIN_LINK_STATUS = ['ACTIVE', 'INACTIVE'];
 
 export const VALID_SHIPPING_STATUS = ['IN-REVIEW', 'DISPATCH', 'SHIPPED'];
+export const VALID_ADMIN_PAYMENT_STATUS = ['pending', 'approved'];
 
 export const VALID_AFFILIATE_USER_STATUS = [
   'BLOCKED',
@@ -480,17 +481,13 @@ export const PAYOUT_STATUS_MAP = {
   3: 'REJECTED',
 };
 
-export const PAYOUT_STATUS_DATA = [
+export const WITHDRAWALS_STATUS_DATA = [
   {
     label: 'PENDING',
-    value: 1,
+    value: 'pending',
   },
   {
     label: 'APPROVED',
-    value: 2,
-  },
-  {
-    label: 'REJECTED',
-    value: 3,
+    value: 'approved',
   },
 ];

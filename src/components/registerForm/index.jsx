@@ -3,7 +3,6 @@ import React, { useCallback } from 'react';
 import { Form, FormikProvider, useFormik } from 'formik';
 import TextInput from '../textInput';
 import Button from '../_button';
-import CountrySelect from '../countrySelect';
 import style from '../loginForm/LoginForm.module.css';
 import PasswordStrength from '../PasswordStrength';
 import Link from 'next/link';
@@ -66,23 +65,6 @@ const RegisterForm = () => {
         <div className={s.mainRegisterForm}>
           <FormikProvider value={formikProps}>
             <Form>
-              <div className={s.nameFields}>
-                <TextInput
-                  label='First name'
-                  name='firstName'
-                  onChange={onChange}
-                />
-                <TextInput
-                  label='Last name'
-                  name='lastName'
-                  onChange={onChange}
-                />
-              </div>
-              <CountrySelect
-                label='Country of operations'
-                name='countryCode'
-                onChange={onChange}
-              />
               <TextInput
                 label='Email'
                 type='email'

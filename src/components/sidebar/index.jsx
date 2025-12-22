@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { getAppLogo } from '@/whitelabel/whiteLabelInfo';
 import { ThemeContext } from '@/theme/ThemeContext';
 import SidebarItem from './sidebarItem';
@@ -13,8 +7,6 @@ import { adminSidebarList } from '@/data/sidebarList';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Logo from '@/assets/logo/logo.png';
-import Kiml_light from '@/assets/logo/kiml_light.png';
-import Kiml_dark from '@/assets/logo/kiml_dark.png';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './Sidebar.module.css';
@@ -28,10 +20,12 @@ import { useSelector } from 'react-redux';
 import { getPreviousRouteParams } from '@/redux/extraData/extraSelectors';
 import Link from 'next/link';
 import { getPermissions } from '@/redux/user/userSelector';
+import imageLoader from '@/components/NextImageLoader';
 
 const Sidebar = ({ isCollapsed, onCollapseToggle }) => {
   const { width: windowWidth } = useWindowSize();
   const { themeType } = useContext(ThemeContext);
+  const applogo = getAppLogo();
   const previousRouteParams = useSelector(getPreviousRouteParams);
   const userRolePermissions = useSelector(getPermissions);
   const path = usePathname();
@@ -65,18 +59,11 @@ const Sidebar = ({ isCollapsed, onCollapseToggle }) => {
           <Link href='/'>
             <Image
               priority={true}
-              src={
-                isCollapsed
-                  ? Logo
-                  : Kiml_light?.[themeType]
-                    ? Kiml_dark?.[themeType]
-                    : themeType === 'light'
-                      ? Kiml_light
-                      : Kiml_dark
-              }
+              src={isCollapsed ? Logo : applogo?.[themeType]}
               width={isCollapsed ? 45 : 215}
               height={45}
               alt={'App logo'}
+              loader={imageLoader}
             />
           </Link>
         </div>
@@ -121,16 +108,11 @@ const Sidebar = ({ isCollapsed, onCollapseToggle }) => {
                 {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
               </IconButton>
               <Image
-                src={
-                  Kiml_light?.[themeType]
-                    ? Kiml_light?.[themeType]
-                    : themeType === 'light'
-                      ? Kiml_light
-                      : Kiml_dark
-                }
+                src={applogo?.[themeType]}
                 width={170}
                 height={35}
                 alt={'App logo'}
+                loader={imageLoader}
               />
             </div>
             <div className={styles.userMenuWrapper}>

@@ -109,9 +109,6 @@ const VerifyEmail = () => {
           Verify
         </Button>
         <p>Can&apos;t find it? Please check your spam folder.</p>
-        <p className={s.note}>
-          Still facing issue? <a href='/support'>Contact Support</a>
-        </p>
       </div>
     </AuthContainer>
   );

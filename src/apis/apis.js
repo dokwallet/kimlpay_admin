@@ -261,6 +261,45 @@ export const getAdminTransactionsAPI = async payload => {
     throw e;
   }
 };
+export const getAdminPaymentWithdrawalsAPI = async payload => {
+  try {
+    const resp = await KimlPayAdmin.get('/admin/get-admin-withdrawals', {
+      params: payload,
+    });
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in getAdminPaymentWithdrawalsAPI', e?.message);
+    throw e;
+  }
+};
+
+export const updateWithdrawalsAPI = async payload => {
+  try {
+    const resp = await KimlPayAdmin.put(
+      '/admin/update-admin-withdrawal',
+      null,
+      {
+        params: payload,
+      },
+    );
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in updateWithdrawalsAPI', e?.message);
+    throw e;
+  }
+};
+
+export const exportAdminPaymentWithdrawalsAPI = async payload => {
+  try {
+    const resp = await KimlPayAdmin.get('/admin/export-admin-withdrawals', {
+      params: payload,
+    });
+    return { status: resp?.status, data: resp?.data?.data };
+  } catch (e) {
+    console.error('Error in exportAdminPaymentWithdrawalsAPI', e?.message);
+    throw e;
+  }
+};
 
 export const getUsersAPI = async payload => {
   try {

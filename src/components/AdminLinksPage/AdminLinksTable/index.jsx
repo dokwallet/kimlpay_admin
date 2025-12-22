@@ -36,7 +36,13 @@ const AdminLinksTable = ({ links }) => {
                 Link Id
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
+                Email
+              </TableCell>
+              <TableCell sx={widthSx} className={styles.tableHeader}>
                 Status
+              </TableCell>
+              <TableCell sx={widthSx} className={styles.tableHeader}>
+                Provider
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
                 Link Type
@@ -61,7 +67,9 @@ const AdminLinksTable = ({ links }) => {
                   )}
                 </TableCell>
                 <TableCell>{row?.linkId || 'N/A'}</TableCell>
+                <TableCell>{row?.userEmail || 'N/A'}</TableCell>
                 <TableCell>{row?.status || 'N/A'}</TableCell>
+                <TableCell>{row?.provider || 'N/A'}</TableCell>
                 <TableCell>
                   <span
                     className={`${styles.statusBadge} ${styles[row?.status?.toLowerCase()] || ''}`}>

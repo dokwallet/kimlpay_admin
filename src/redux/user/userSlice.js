@@ -152,16 +152,23 @@ export const register = createAsyncThunk(
           dispatch(setIsRegisterSubmitting(false));
           router.replace('/login');
         } else {
-          router.replace('/login');
-          dispatch(
-            setPreAuthUserDetails({
-              email: resp?.data?.email,
-              password: payload.password,
-              email_verified: resp?.data?.email_verified,
-              userId: resp?.data?._id,
-              two_fa_enable: resp?.data?.two_fa_enable,
-            }),
-          );
+          const userDetails = {
+            email: resp?.data?.email,
+            password: payload.password,
+            email_verified: resp?.data?.email_verified,
+            userId: resp?.data?._id,
+            two_fa_enable: resp?.data?.two_fa_enable,
+          };
+
+          dispatch(setPreAuthUserDetails(userDetails));
+
+          if (!resp?.data?.email_verified) {
+            router.replace('/verify-email');
+          } else if (resp?.data?.two_fa_enable) {
+            router.replace('/verify-twofa');
+          } else {
+            router.replace('/dashboard');
+          }
         }
         dispatch(resetRegisterFormValues());
       } else {
@@ -174,6 +181,7 @@ export const register = createAsyncThunk(
         error: e,
       });
       dispatch(setIsRegisterSubmitting(false));
+      throw e;
     }
   },
 );
@@ -250,20 +258,54 @@ export const verifyEmail = createAsyncThunk(
     try {
       dispatch(setIsEmailOTPSubmitting(true));
       const router = payload.router;
-      delete payload.router;
-      const resp = await verifyEmailOtp(payload);
-      if (resp?.status === 200) {
-        router.replace('/verify-twofa');
-      } else {
-        throw Error('Invalid otp');
+      const otp = payload.otp;
+      const currentState = thunkAPI.getState();
+      const user = getPreAuthUser(currentState);
+
+      if (!user?.email) {
+        throw new Error('Email not found. Please try registering again.');
       }
-      dispatch(setIsEmailOTPSubmitting(false));
+
+      const resp = await verifyEmailOtp({
+        email: user.email,
+        otp,
+      });
+
+      if (resp?.status === 200) {
+        dispatch(
+          setPreAuthUserDetails({
+            ...user,
+            email_verified: true,
+          }),
+        );
+
+        showToast({
+          type: 'successToast',
+          title: 'Email verified successfully!',
+        });
+
+        if (user.two_fa_enable) {
+          router.replace('/verify-twofa');
+        } else {
+          router.replace('/login');
+        }
+
+        return { success: true };
+      } else {
+        throw new Error(
+          resp?.data?.message || 'Failed to verify email. Please try again.',
+        );
+      }
     } catch (e) {
       console.error('Error in verifyEmailOTP', e);
       showToast({
         type: 'errorToast',
         error: e,
+        title: 'Verification Failed',
+        message: e.message || 'Failed to verify email. Please try again.',
       });
+      throw e;
+    } finally {
       dispatch(setIsEmailOTPSubmitting(false));
     }
   },

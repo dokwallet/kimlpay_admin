@@ -36,7 +36,13 @@ const AdminTransactionsTable = ({ transactions }) => {
                 TID
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
+                Email
+              </TableCell>
+              <TableCell sx={widthSx} className={styles.tableHeader}>
                 Status
+              </TableCell>
+              <TableCell sx={widthSx} className={styles.tableHeader}>
+                Provider Name
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
                 Fiat Total
@@ -61,12 +67,14 @@ const AdminTransactionsTable = ({ transactions }) => {
                   )}
                 </TableCell>
                 <TableCell>{row?.external_tx_id || 'N/A'}</TableCell>
+                <TableCell>{row?.user_email || 'N/A'}</TableCell>
                 <TableCell>
                   <span
                     className={`${styles.statusBadge} ${styles[row?.status?.toLowerCase()] || ''}`}>
                     {row?.status || 'N/A'}
                   </span>
                 </TableCell>
+                <TableCell>{row?.type || 'N/A'}</TableCell>
                 <TableCell>
                   {row?.total_amount} {row?.currency_from}
                 </TableCell>

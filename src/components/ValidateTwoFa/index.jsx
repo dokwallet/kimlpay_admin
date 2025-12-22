@@ -21,6 +21,7 @@ import { isSigning } from '@/redux/auth/authSelector';
 import SimpleSelect from '@/components/SimpleSelect';
 import { TwoFaMethod } from '@/utils/helper';
 import { showToast } from '@/utils/toast';
+import imageLoader from '@/components/NextImageLoader';
 
 const ValidateTwoFa = () => {
   const [code, setCode] = useState('');
@@ -167,6 +168,7 @@ const ValidateTwoFa = () => {
               alt={'qr-code'}
               height={200}
               width={200}
+              loader={imageLoader}
             />
             {isOpenAppBtnVisible && (
               <>
@@ -210,9 +212,6 @@ const ValidateTwoFa = () => {
               disabled={!verifyEnabled}>
               Verify
             </Button>
-            <p className={s.note}>
-              Still facing issue? <a href='/support'>Contact Support</a>
-            </p>
           </div>
         )}
       </div>

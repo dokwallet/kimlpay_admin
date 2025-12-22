@@ -25,7 +25,6 @@ import imageLoader from '@/components/NextImageLoader';
 const Sidebar = ({ isCollapsed, onCollapseToggle }) => {
   const { width: windowWidth } = useWindowSize();
   const { themeType } = useContext(ThemeContext);
-  const applogo = getAppLogo();
   const previousRouteParams = useSelector(getPreviousRouteParams);
   const userRolePermissions = useSelector(getPermissions);
   const path = usePathname();
@@ -59,7 +58,7 @@ const Sidebar = ({ isCollapsed, onCollapseToggle }) => {
           <Link href='/'>
             <Image
               priority={true}
-              src={isCollapsed ? Logo : applogo?.[themeType]}
+              src={isCollapsed ? Logo : getAppLogo()?.[themeType]}
               width={isCollapsed ? 45 : 215}
               height={45}
               alt={'App logo'}
@@ -108,7 +107,7 @@ const Sidebar = ({ isCollapsed, onCollapseToggle }) => {
                 {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
               </IconButton>
               <Image
-                src={applogo?.[themeType]}
+                src={getAppLogo()?.[themeType]}
                 width={170}
                 height={35}
                 alt={'App logo'}

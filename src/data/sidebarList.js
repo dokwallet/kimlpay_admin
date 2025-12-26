@@ -1,5 +1,11 @@
 import SettingsIcon from '@mui/icons-material/Settings';
-import { PeopleAlt, Paid, Link, Telegram } from '@mui/icons-material';
+import {
+  PeopleAlt,
+  Paid,
+  Link,
+  Telegram,
+  AccountBalanceWallet,
+} from '@mui/icons-material';
 
 export const adminSidebarList = [
   {
@@ -16,17 +22,22 @@ export const adminSidebarList = [
     permission: 'read_links',
   },
   {
-    href: '/dashboard/admin/telegram-users',
-    label: 'Telegram Users',
-    icon: <Telegram />,
-    permission: 'read_telegram_users',
-  },
-
-  {
     href: '/dashboard/admin/transactions',
     label: 'Transactions',
     icon: <Paid />,
     permission: 'read_transactions',
+  },
+  {
+    href: '/dashboard/admin/withdrawals',
+    label: 'Withdrawal',
+    icon: <AccountBalanceWallet />,
+    permission: 'read_withdrawals',
+  },
+  {
+    href: '/dashboard/admin/telegram-users',
+    label: 'Telegram Users',
+    icon: <Telegram />,
+    permission: 'read_telegram_users',
   },
 
   {

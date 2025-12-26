@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext } from 'react';
 import s from './AuthHeader.module.css';
 import { ThemeContext } from '@/theme/ThemeContext';
 import Image from 'next/image';
-import KimlLogo from '@/assets/logo/kiml_light.png';
-import KimlLogoDark from '@/assets/logo/kiml_dark.png';
+import imageLoader from '@/components/NextImageLoader';
 import Link from 'next/link';
+import { getAppLogo } from '@/whitelabel/whiteLabelInfo';
 
 const AuthHeader = ({ hideTitle }) => {
   const { themeType } = useContext(ThemeContext);
@@ -14,15 +14,10 @@ const AuthHeader = ({ hideTitle }) => {
       <Link className={s.logoContainer} href={'/'}>
         <Image
           priority={true}
-          src={
-            KimlLogo?.[themeType]
-              ? KimlLogo?.[themeType]
-              : themeType === 'light'
-                ? KimlLogo
-                : KimlLogoDark
-          }
+          src={getAppLogo()?.[themeType]}
           width={250}
           height={50}
+          loader={imageLoader}
           alt={'App logo'}
         />
       </Link>

@@ -82,7 +82,7 @@ const AdminTelegramUsersTable = ({
                 </TableCell>
                 <TableCell>{user?.telegram_id || 'N/A'}</TableCell>
                 <TableCell>@{user?.telegram_username || 'N/A'}</TableCell>
-                <TableCell>{user?.user?.email || 'N/A'}</TableCell>
+                <TableCell>{user?.email || 'N/A'}</TableCell>
                 <TableCell>
                   {user?.full_name ||
                     `${user?.first_name || ''} ${user?.last_name || ''}`.trim() ||

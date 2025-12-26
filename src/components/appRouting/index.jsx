@@ -25,6 +25,7 @@ const secureAdminRoutes = [
   '/dashboard/admin/users',
   '/dashboard/admin/link',
   '/dashboard/admin/telegram-users',
+  '/dashboard/admin/withdrawals',
   '/dashboard/admin/transactions',
 ];
 

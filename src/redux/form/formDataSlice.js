@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const registerForm = {
-  firstName: '',
-  lastName: '',
-  countryCode: null,
   email: '',
   password: '',
   confirmPassword: '',

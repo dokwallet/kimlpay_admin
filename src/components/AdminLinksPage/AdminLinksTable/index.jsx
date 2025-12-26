@@ -36,6 +36,9 @@ const AdminLinksTable = ({ links }) => {
                 Link Id
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
+                Email
+              </TableCell>
+              <TableCell sx={widthSx} className={styles.tableHeader}>
                 Status
               </TableCell>
               <TableCell sx={widthSx} className={styles.tableHeader}>
@@ -61,6 +64,7 @@ const AdminLinksTable = ({ links }) => {
                   )}
                 </TableCell>
                 <TableCell>{row?.linkId || 'N/A'}</TableCell>
+                <TableCell>{row?.userEmail || 'N/A'}</TableCell>
                 <TableCell>{row?.status || 'N/A'}</TableCell>
                 <TableCell>
                   <span

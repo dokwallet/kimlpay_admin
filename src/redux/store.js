@@ -13,6 +13,7 @@ import adminTelegramUserSlice from '@/redux/adminTelegramUser/adminTelegramUserS
 import { settingsSlice } from '@/redux/settings/settingsSlice';
 import { authSlice } from '@/redux/auth/authSlice';
 import adminLinkReducer from '@/redux/adminLink/adminLinkSlice';
+import { adminPaymentWithdrawalsSlice } from '@/redux/adminPaymentWithdrawals/adminPaymentWithdrawalsSlice';
 
 const encryptor = encryptTransform({
   secretKey: 'kiml_credit_cards', // Replace with your secret key
@@ -37,6 +38,7 @@ const rootReducer = persistCombineReducers(persistConfig, {
   [adminTransactionSlice.name]: adminTransactionSlice.reducer,
   [adminTelegramUserSlice.name]: adminTelegramUserSlice.reducer,
   [settingsSlice.name]: settingsSlice.reducer,
+  [adminPaymentWithdrawalsSlice.name]: adminPaymentWithdrawalsSlice.reducer,
   adminLinks: adminLinkReducer,
 });
 

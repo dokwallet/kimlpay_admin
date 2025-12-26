@@ -33,6 +33,7 @@ import {
 } from '@/redux/form/formDataSlice';
 import { getUserData } from '@/redux/user/userSelector';
 import { showToast } from '@/utils/toast';
+import imageLoader from '@/components/NextImageLoader';
 
 const AuthenticatorForm = () => {
   const dispatch = useDispatch();
@@ -189,6 +190,7 @@ const AuthenticatorForm = () => {
                     alt={'qr-code'}
                     height={200}
                     width={200}
+                    loader={imageLoader}
                   />
                 </div>
 

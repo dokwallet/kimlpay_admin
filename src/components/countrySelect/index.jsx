@@ -14,6 +14,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useField, useFormikContext } from 'formik';
 import { countries, SUPPORTED_COUNTRIES } from './countries';
 import s from './CountrySelect.module.css';
+import imageLoader from '@/components/NextImageLoader';
 
 const PopperComponent = props => {
   return (
@@ -55,6 +56,7 @@ export const countryOption = (props, option) => {
         srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
         src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
         alt=''
+        loader={imageLoader}
       />
       {option.label} ({option.code}) {option.phone}
     </Box>

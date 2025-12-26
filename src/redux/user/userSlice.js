@@ -207,11 +207,26 @@ export const checkUserCredential = createAsyncThunk(
       } else if (userStatus === 1) {
         router.replace('/verify-twofa');
       } else if (userStatus === 2) {
-        throw new Error('Your account is blocked.');
+        showToast({
+          type: 'errorToast',
+          error: {
+            message: 'Your account is blocked.',
+          },
+        });
       } else if (userStatus === 3) {
-        throw new Error('Your account is not approved yet.');
+        showToast({
+          type: 'errorToast',
+          error: {
+            message: 'Your account is not approved yet.',
+          },
+        });
       } else {
-        throw Error('User check credential failed');
+        showToast({
+          type: 'errorToast',
+          error: {
+            message: 'User check credential failed',
+          },
+        });
       }
     } catch (e) {
       console.error('Error in checkUserCredentials', e);

@@ -152,6 +152,7 @@ export const register = createAsyncThunk(
           dispatch(setIsRegisterSubmitting(false));
           router.replace('/login');
         } else {
+          router.replace('/verify-email');
           const userDetails = {
             email: resp?.data?.email,
             password: payload.password,
@@ -161,14 +162,6 @@ export const register = createAsyncThunk(
           };
 
           dispatch(setPreAuthUserDetails(userDetails));
-
-          if (!resp?.data?.email_verified) {
-            router.replace('/verify-email');
-          } else if (resp?.data?.two_fa_enable) {
-            router.replace('/verify-twofa');
-          } else {
-            router.replace('/dashboard');
-          }
         }
         dispatch(resetRegisterFormValues());
       } else {
@@ -195,27 +188,28 @@ export const checkUserCredential = createAsyncThunk(
       const router = payload.router;
       delete payload.router;
       const resp = await checkCredential(payload);
-      const userResp = resp?.data?.user || resp?.data || {};
+      const userStatus = resp?.data?.user?.status;
       dispatch(
         setPreAuthUserDetails({
-          email: userResp?.email || resp?.data?.email,
+          email: resp?.data?.user?.email,
           password: payload.password,
-          email_verified:
-            typeof userResp?.email_verified !== 'undefined'
-              ? userResp?.email_verified
-              : resp?.data?.email_verified,
-          userId: userResp?._id || resp?.data?._id,
-          two_fa_enable:
-            typeof userResp?.two_fa_enable !== 'undefined'
-              ? userResp?.two_fa_enable
-              : resp?.data?.two_fa_enable,
-          two_fa_methods:
-            userResp?.two_fa_methods || resp?.data?.two_fa_methods,
+          email_verified: resp?.data?.user?.email_verified,
+          userId: resp?.data?.user?._id,
+          two_fa_enable: resp?.data?.user?.two_fa_enable,
+          two_fa_methods: resp?.data?.user?.two_fa_methods,
+          status: userStatus,
         }),
       );
       dispatch(resetLoginFormValues());
-      if (resp?.data) {
+
+      if (!resp?.data?.user?.email_verified) {
+        router.replace('/verify-email');
+      } else if (userStatus === 1) {
         router.replace('/verify-twofa');
+      } else if (userStatus === 2) {
+        throw new Error('Your account is blocked.');
+      } else if (userStatus === 3) {
+        throw new Error('Your account is not approved yet.');
       } else {
         throw Error('User check credential failed');
       }

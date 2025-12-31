@@ -299,9 +299,6 @@ export const USER_STATUS_DATA = [
 ];
 
 export const USER_STATUS_MAP = {
-  active: 'ACTIVE',
-  blocked: 'BLOCKED',
-  pending: 'PENDING',
   1: 'ACTIVE',
   2: 'BLOCKED',
   3: 'PENDING',
@@ -384,49 +381,10 @@ export const CHART_TYPE = [
   },
 ];
 
-export const SHIPPING_STATUS_MAP = {
-  1: 'IN-REVIEW',
-  2: 'DISPATCH',
-  3: 'SHIPPED',
-};
-
-export const AFFILIATE_USER_STATUS_DATA = [
-  {
-    label: 'Active',
-    value: 'ACTIVE',
-  },
-  {
-    label: 'Blocked',
-    value: 'BLOCKED',
-  },
-  {
-    label: 'Requested',
-    value: 'REQUESTED',
-  },
-];
-
-export const AFFILIATE_USER_STATUS_MAP = {
-  1: 'ACTIVE',
-  2: 'BLOCKED',
-  3: 'REQUESTED',
-};
-
-export const VALID_TOP_STATUS = ['PENDING', 'APPROVED', 'REJECTED'];
-export const VALID_TRANSACTION_FILE_TYPE = ['DAILY_FILE', 'FEE_FILE'];
-
 export const VALID_USERS_STATUS = ['ACTIVE', 'BLOCKED', 'PENDING'];
-export const ADMIN_LINK_STATUS = ['ACTIVE', 'INACTIVE'];
 
 export const VALID_SHIPPING_STATUS = ['IN-REVIEW', 'DISPATCH', 'SHIPPED'];
 export const VALID_ADMIN_PAYMENT_STATUS = ['pending', 'approved', 'rejected'];
-
-export const VALID_AFFILIATE_USER_STATUS = [
-  'BLOCKED',
-  'ACTIVE',
-  'INACTIVE',
-  'REQUESTED',
-];
-export const VALID_USERS_CHART_TYPE = ['daily', 'monthly'];
 
 export const SETTINGS_DATA = [
   {

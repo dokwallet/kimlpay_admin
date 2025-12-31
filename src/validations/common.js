@@ -30,23 +30,3 @@ export const endDateValidation = date()
       return !value || !startDate || value >= startDate;
     },
   );
-
-export const optionalTopupStatusValidation = string()
-  .optional()
-  .nullable()
-  .oneOf(['PENDING', 'APPROVED', 'REJECTED']);
-
-export const optionalUserStatusValidation = string()
-  .optional()
-  .nullable()
-  .oneOf(['ACTIVE', 'BLOCKED', 'PENDING']);
-
-export const optionalShippingStatusValidation = string()
-  .optional()
-  .nullable()
-  .oneOf(['IN-REVIEW', 'DISPATCH', 'SHIPPED']);
-
-export const optionalAffiliateUserStatusValidation = string()
-  .optional()
-  .nullable()
-  .oneOf(['BLOCKED', 'ACTIVE', 'INACTIVE', 'REQUESTED']);

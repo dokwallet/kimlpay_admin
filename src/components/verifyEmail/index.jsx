@@ -39,15 +39,9 @@ const VerifyEmail = () => {
   };
 
   useEffect(() => {
-    const sendInitialVerification = async () => {
-      await dispatch(resendVerifyEmail()).unwrap();
-      startTimer();
-    };
-
-    sendInitialVerification();
-
+    startTimer();
     return () => clearInterval(timerRef.current);
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     setVerifyEnabled(code.length === 6);
@@ -64,13 +58,12 @@ const VerifyEmail = () => {
   };
 
   const handleResend = async () => {
-    if (timer === 0) {
-      await dispatch(resendVerifyEmail()).unwrap();
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-      startTimer();
+    await dispatch(resendVerifyEmail()).unwrap();
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
     }
+    startTimer();
+    // Logic to resend the code
   };
 
   const handleVerify = useCallback(async () => {

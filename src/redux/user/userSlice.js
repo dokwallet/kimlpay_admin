@@ -143,26 +143,13 @@ export const register = createAsyncThunk(
       };
       const resp = await registerUser(finalPayload);
       if (resp?.status === 201) {
-        if (resp?.data?.register_complete) {
-          showToast({
-            type: 'successToast',
-            title:
-              'Registration complete but you require admin approval to access the app',
-          });
-          dispatch(setIsRegisterSubmitting(false));
-          router.replace('/login');
-        } else {
-          router.replace('/verify-email');
-          const userDetails = {
-            email: resp?.data?.email,
-            password: payload.password,
-            email_verified: resp?.data?.email_verified,
-            userId: resp?.data?._id,
-            two_fa_enable: resp?.data?.two_fa_enable,
-          };
-
-          dispatch(setPreAuthUserDetails(userDetails));
-        }
+        showToast({
+          type: 'successToast',
+          title:
+            'Registration completed successfully! Your application is pending approval. We will notify you once your account is activated.',
+        });
+        dispatch(setIsRegisterSubmitting(false));
+        router.replace('/login');
         dispatch(resetRegisterFormValues());
       } else {
         throw Error('User registration failed');
@@ -292,12 +279,7 @@ export const verifyEmail = createAsyncThunk(
           type: 'successToast',
           title: 'Email verified successfully!',
         });
-
-        if (user.two_fa_enable) {
-          router.replace('/verify-twofa');
-        } else {
-          router.replace('/login');
-        }
+        router.replace('/verify-twofa');
 
         return { success: true };
       } else {
